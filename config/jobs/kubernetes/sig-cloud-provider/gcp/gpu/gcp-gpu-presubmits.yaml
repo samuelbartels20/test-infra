@@ -37,7 +37,7 @@ presubmits:
       path_alias: k8s.io/release
     spec:
       containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         - /workspace/scenarios/kubernetes_e2e.py
@@ -50,7 +50,7 @@ presubmits:
         - --gcp-node-image=gci
         - --gcp-nodes=2
         - --gcp-project-type=gpu-project
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --ginkgo-parallel=30
         - --provider=gce
         - --test_args=--ginkgo.focus=\[Feature:GPUDevicePlugin\] --minStartupPods=8

@@ -21,12 +21,12 @@ periodics:
       - --env=KONNECTIVITY_SERVICE_PROXY_PROTOCOL_MODE=http-connect
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --ginkgo-parallel=25
       - --provider=gce
       - --test_args=--ginkgo.skip=\[Driver:.gcepd\]|\[Slow\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\] --minStartupPods=9
       - --timeout=60m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         requests:
           cpu: 2
@@ -58,12 +58,12 @@ periodics:
       - --env=KONNECTIVITY_SERVICE_PROXY_PROTOCOL_MODE=grpc
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --ginkgo-parallel=25
       - --provider=gce
       - --test_args=--ginkgo.skip=\[Driver:.gcepd\]|\[Slow\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\] --minStartupPods=9
       - --timeout=60m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         requests:
           cpu: 2
@@ -108,12 +108,12 @@ presubmits:
         - --env=EGRESS_VIA_KONNECTIVITY=true
         - --env=KONNECTIVITY_SERVICE_PROXY_PROTOCOL_MODE=http-connect
         - --gcp-node-image=gci
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --ginkgo-parallel=30
         - --provider=gce
         - --test_args=--ginkgo.skip=\[Driver:.gcepd\]|\[Slow\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\] --minStartupPods=9
         - --timeout=80m
-        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         resources:
           requests:
             cpu: 2
@@ -158,12 +158,12 @@ presubmits:
         - --env=EGRESS_VIA_KONNECTIVITY=true
         - --env=KONNECTIVITY_SERVICE_PROXY_PROTOCOL_MODE=grpc
         - --gcp-node-image=gci
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --ginkgo-parallel=30
         - --provider=gce
         - --test_args=--ginkgo.skip=\[Driver:.gcepd\]|\[Slow\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\] --minStartupPods=9
         - --timeout=80m
-        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         resources:
           requests:
             cpu: 4

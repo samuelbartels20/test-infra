@@ -17,7 +17,7 @@ periodics:
     workdir: true
   spec:
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       command:
       - runner.sh
       - /workspace/scenarios/kubernetes_e2e.py
@@ -25,7 +25,7 @@ periodics:
       - --check-leaked-resources
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test=false
       - --test-cmd=../vertical-pod-autoscaler/hack/run-e2e.sh
@@ -63,7 +63,7 @@ periodics:
     workdir: true
   spec:
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       command:
       - runner.sh
       - /workspace/scenarios/kubernetes_e2e.py
@@ -71,7 +71,7 @@ periodics:
       - --check-leaked-resources
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test=false
       - --test-cmd=../vertical-pod-autoscaler/hack/run-e2e.sh
@@ -112,7 +112,7 @@ periodics:
     workdir: true
   spec:
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       command:
       - runner.sh
       - /workspace/scenarios/kubernetes_e2e.py
@@ -120,7 +120,7 @@ periodics:
       - --check-leaked-resources
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test=false
       - --test-cmd=../vertical-pod-autoscaler/hack/run-e2e.sh
@@ -161,7 +161,7 @@ periodics:
     workdir: true
   spec:
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       command:
       - runner.sh
       - /workspace/scenarios/kubernetes_e2e.py
@@ -169,7 +169,7 @@ periodics:
       - --check-leaked-resources
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test=false
       - --test-cmd=../vertical-pod-autoscaler/hack/run-e2e.sh
@@ -210,7 +210,7 @@ periodics:
     workdir: true
   spec:
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       command:
       - runner.sh
       - /workspace/scenarios/kubernetes_e2e.py
@@ -218,7 +218,7 @@ periodics:
       - --check-leaked-resources
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test=false
       - --test-cmd=../vertical-pod-autoscaler/hack/run-e2e.sh
@@ -268,12 +268,12 @@ periodics:
       - --extract=ci/latest
       - --gcp-node-image=gci
       - --gcp-nodes=3
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --runtime-config=scheduling.k8s.io/v1alpha1=true
       - --test_args=--ginkgo.focus=\[Feature:ClusterSizeAutoscalingScaleUp\]|\[Feature:ClusterSizeAutoscalingScaleDown\]|\[Feature:InitialResources\] --ginkgo.skip=\[Flaky\] --minStartupPods=8
       - --timeout=400m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         limits:
           cpu: 2
@@ -303,13 +303,13 @@ periodics:
       - --cluster=hpa
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       # Enable HPAScaleToZero. Required for scale to zero tests.
       - --env=KUBE_FEATURE_GATES=HPAScaleToZero=true
       - --test_args=--ginkgo.focus=\[Feature:CustomMetricsAutoscaling\] --ginkgo.skip=\[Flaky\] --minStartupPods=8
       - --timeout=300m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         limits:
           cpu: 2
@@ -339,13 +339,13 @@ periodics:
       - --cluster=hpa
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       # Enable HPAScaleToZero. Required for scale to zero tests.
       - --env=KUBE_FEATURE_GATES=HPAScaleToZero=true
       - --test_args=--ginkgo.focus=\[Feature:CustomMetricsAutoscaling\] --ginkgo.skip=\[Flaky\] --minStartupPods=8
       - --timeout=300m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         limits:
           cpu: 2
@@ -374,14 +374,14 @@ periodics:
       args:
       - --check-leaked-resources
       - --provider=gce
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --gcp-node-image=gci
       - --extract=ci/latest
       - --timeout=240m
       - --test_args=--ginkgo.focus=\[Feature:HPA\] --ginkgo.skip=\[Alpha\]|\[Beta\]
         --minStartupPods=8
       - --ginkgo-parallel=1
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         limits:
           cpu: 2
@@ -411,7 +411,7 @@ periodics:
       args:
       - --check-leaked-resources
       - --provider=gce
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --gcp-node-image=gci
       - --extract=ci/latest
       - --timeout=240m
@@ -419,7 +419,7 @@ periodics:
       - --test_args=--ginkgo.focus=\[Feature:HPAConfigurableTolerance\]
         --minStartupPods=8
       - --ginkgo-parallel=1
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
       resources:
         limits:
           cpu: 2
