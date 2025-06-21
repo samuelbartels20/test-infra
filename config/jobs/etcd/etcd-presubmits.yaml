@@ -13,7 +13,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-build
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -33,6 +33,7 @@ presubmits:
     branches:
     - main
     - release-3.6
+    - release-3.5
     - release-3.4
     decorate: true
     annotations:
@@ -40,7 +41,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-unit-test-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -69,7 +70,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-unit-test-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -94,6 +95,7 @@ presubmits:
     branches:
     - main
     - release-3.6
+    - release-3.5
     - release-3.4
     decorate: true
     annotations:
@@ -101,7 +103,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-unit-test-386
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -132,7 +134,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-verify
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - /bin/bash
         args:
@@ -157,24 +159,54 @@ presubmits:
             cpu: "4"
             memory: "4Gi"
 
-  - name: pull-etcd-govulncheck
+  - name: pull-etcd-govulncheck-main
     cluster: eks-prow-build-cluster
     always_run: true
     branches:
     - main
+    decorate: true
+    annotations:
+      testgrid-dashboards: sig-etcd-presubmits
+      testgrid-tab-name: pull-etcd-govulncheck-main
+    spec:
+      containers:
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
+        command:
+        - runner.sh
+        args:
+        - bash
+        - -c
+        - |
+          export PATH=$GOPATH/bin:$PATH && make run-govulncheck
+        resources:
+          requests:
+            cpu: "4"
+            memory: "4Gi"
+          limits:
+            cpu: "4"
+            memory: "4Gi"
+
+  - name: pull-etcd-govulncheck-release-branches
+    cluster: eks-prow-build-cluster
+    always_run: true
+    branches:
     - release-3.6
     - release-3.4
     decorate: true
     annotations:
       testgrid-dashboards: sig-etcd-presubmits
-      testgrid-tab-name: pull-etcd-govulncheck
+      testgrid-tab-name: pull-etcd-govulncheck-release-branches
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      # Keep it in sync with the Go version used by the stable releases.
+      # Once the stable branches use Go 1.24, we can use the tool directive
+      # and the installed tools should use the same toolchain version from the
+      # go.mod. Therefore, we can go back to use the kubekins image, and
+      # consolidate the jobs.
+      - image: public.ecr.aws/docker/library/golang:1.23
         command:
-        - runner.sh
+        - /bin/bash
         args:
-        - bash
         - -c
         - |
           export PATH=$GOPATH/bin:$PATH && make run-govulncheck
@@ -192,13 +224,14 @@ presubmits:
     branches:
     - main
     - release-3.6
+    - release-3.4
     decorate: true
     annotations:
       testgrid-dashboards: sig-etcd-presubmits
       testgrid-tab-name: pull-etcd-e2e-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -228,7 +261,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-e2e-386
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -257,7 +290,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-e2e-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -282,6 +315,7 @@ presubmits:
     branches:
     - main
     - release-3.6
+    - release-3.5
     - release-3.4
     decorate: true
     annotations:
@@ -289,7 +323,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-integration-1-cpu-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -321,7 +355,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-integration-1-cpu-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -348,6 +382,7 @@ presubmits:
     branches:
     - main
     - release-3.6
+    - release-3.5
     - release-3.4
     decorate: true
     annotations:
@@ -355,7 +390,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-integration-2-cpu-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -387,7 +422,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-integration-2-cpu-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -414,6 +449,7 @@ presubmits:
     branches:
     - main
     - release-3.6
+    - release-3.5
     - release-3.4
     decorate: true
     annotations:
@@ -421,7 +457,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-integration-4-cpu-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -453,7 +489,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-integration-4-cpu-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -485,7 +521,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-smoke-4-cpu-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
         - runner.sh
         args:
@@ -519,7 +555,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-robustness-amd64
     spec:
       containers:
-        - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+        - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
           command:
             - runner.sh
           args:
@@ -566,7 +602,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-robustness-arm64
     spec:
       containers:
-        - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+        - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
           command:
             - runner.sh
           args:
@@ -618,7 +654,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-release-tests
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -652,7 +688,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-contrib-mixin
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -682,7 +718,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-fuzzing-v3rpc
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -718,7 +754,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-grpcproxy-integration-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -749,7 +785,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-grpcproxy-e2e-amd64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -779,7 +815,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-grpcproxy-integration-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -811,7 +847,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-grpcproxy-e2e-arm64
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:
@@ -843,7 +879,7 @@ presubmits:
       testgrid-tab-name: pull-etcd-coverage-report
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250527-1b2b10e804-master
+      - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20250613-876fb90a97-master
         command:
           - runner.sh
         args:

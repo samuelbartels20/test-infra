@@ -143,11 +143,11 @@ approve:
   ignore_review_state: true
 
 help:
+  help_guidelines_url: https://www.kubernetes.dev/docs/guide/help-wanted/
   help_guidelines_summary: |
                         Please ensure that the issue body includes answers to the following questions:
                         - Why are we solving this issue?
                         - To address this issue, are there any code changes? If there are code changes, what needs to be done in the code and what places can the assignee treat as reference points?
-                        - Does this issue have zero to low barrier of entry?
                         - How can the assignee reach out to you for help?
 
 # Lower bounds in number of lines changed; XS is assumed to be zero.
@@ -537,9 +537,9 @@ milestone_applier:
     release-2.6: v2.6
     release-2.5: v2.5
   kubernetes-sigs/cluster-api-provider-azure:
-    main: v1.20
+    main: v1.21
+    release-1.20: v1.20
     release-1.19: v1.19
-    release-1.18: v1.18
   kubernetes-sigs/cluster-api-provider-digitalocean:
     main: v1.1.0
     release-1.0: v1.0.0
@@ -1621,6 +1621,7 @@ plugins:
   kubernetes-sigs/image-builder:
     plugins:
     - mergecommitblocker
+    - override
 
   kubernetes-sigs/contributor-playground:
     plugins:
@@ -1694,7 +1695,7 @@ plugins:
     - owners-label
     - verify-owners
     - hold
-    
+    - lifecycle
 
   containerd/containerd:
     plugins:

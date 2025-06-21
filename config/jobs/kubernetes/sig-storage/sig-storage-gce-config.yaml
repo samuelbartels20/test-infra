@@ -42,14 +42,14 @@ presubmits:
         - --build=quick
         - --cluster=
         - --gcp-node-image=gci
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --ginkgo-parallel=30
         - --provider=gce
         - --test_args=--ginkgo.focus=\[sig-storage\].*\[Slow\] --ginkgo.skip=\[Driver:.gcepd\]|\[Serial\]|\[Disruptive\]|\[Flaky\]|\[Feature:.+\] --minStartupPods=8
         - --timeout=120m
         securityContext:
           privileged: true
-        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         resources:
           limits:
             cpu: "4"
@@ -101,13 +101,13 @@ presubmits:
         - --build=quick
         - --cluster=
         - --gcp-node-image=gci
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --provider=gce
         - --test_args=--ginkgo.focus=\[Feature:VolumeSnapshotDataSource\] --ginkgo.skip=\[Disruptive\]|\[Flaky\] --minStartupPods=8
         - --timeout=150m
         securityContext:
           privileged: true
-        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         resources:
           limits:
             cpu: "4"
@@ -159,11 +159,11 @@ presubmits:
         - --build=quick
         - --cluster=
         - --gcp-node-image=gci
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --provider=gce
         - --test_args=--ginkgo.focus=CSI.*(\[Serial\]|\[Disruptive\]) --ginkgo.skip=\[Flaky\]|\[Feature:.+\]|\[Slow\] --minStartupPods=8
         - --timeout=150m
-        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         resources:
           limits:
             cpu: "4"
@@ -207,11 +207,11 @@ presubmits:
         - --build=quick
         - --gcp-master-image=gci
         - --gcp-node-image=gci
-        - --gcp-zone=us-west1-b
+        - --gcp-zone=us-central1-b
         - --provider=gce
         - --test_args=--ginkgo.focus=\[sig-storage\].*\[Disruptive\] --ginkgo.skip=\[Driver:.gcepd\]|\[Flaky\]|\[Feature:.+\] --minStartupPods=8
         - --timeout=240m
-        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+        image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
         resources:
           limits:
             cpu: "4"
@@ -273,7 +273,7 @@ presubmits:
                 --skip-regex="\[Feature:Volumes\]|\[Driver:.nfs\]|\[Driver:.local\]|\[Feature:SELinuxMountReadWriteOncePodOnly\]" \
                 --use-built-binaries=true \
                 --parallel=1 # [Feature:SELinux] tests include serial ones
-          image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+          image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
           resources:
             limits:
               cpu: 4
@@ -313,7 +313,7 @@ periodics:
       - --extract=ci/fast/latest-fast
       - --gcp-master-image=ubuntu
       - --gcp-node-image=ubuntu
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test_args=--ginkgo.focus=\[Driver:.iscsi\] --ginkgo.skip=\[Flaky\] --minStartupPods=8
       - --timeout=120m
@@ -324,7 +324,7 @@ periodics:
         limits:
           memory: "2000Mi"
           cpu: 4000m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
   annotations:
     testgrid-num-columns-recent: '20'
 - interval: 24h
@@ -345,7 +345,7 @@ periodics:
       - --check-leaked-resources
       - --extract=ci/latest
       - --gcp-node-image=gci
-      - --gcp-zone=us-west1-b
+      - --gcp-zone=us-central1-b
       - --provider=gce
       - --test_args=--ginkgo.focus=\[Feature:VolumeSnapshotDataSource\] --ginkgo.skip=\[Disruptive\]|\[Flaky\] --minStartupPods=8
       - --timeout=120m
@@ -356,7 +356,7 @@ periodics:
         limits:
           memory: "2000Mi"
           cpu: 4000m
-      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250527-1b2b10e804-master
+      image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20250613-876fb90a97-master
   annotations:
     testgrid-num-columns-recent: '20'
     testgrid-num-failures-to-alert: '6'
