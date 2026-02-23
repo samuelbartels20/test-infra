@@ -160,51 +160,6 @@ presubmits:
       testgrid-tab-name: capz-pr-e2e-optional-main
       testgrid-alert-email: k8s-infra-staging-cluster-api-azure@kubernetes.io
       description: Runs optional end-to-end tests that are not required for every PR.
-  - name: pull-cluster-api-provider-azure-e2e-windows
-    cluster: eks-prow-build-cluster
-    path_alias: "sigs.k8s.io/cluster-api-provider-azure"
-    always_run: false
-    optional: true
-    decorate: true
-    decoration_config:
-      timeout: 4h
-    max_concurrency: 5
-    labels:
-      preset-dind-enabled: "true"
-      preset-kind-volume-mounts: "true"
-      preset-azure-community: "true"
-    branches:
-    - ^main$
-    spec:
-      containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260205-38cfa9523f-1.32
-        command:
-          - runner.sh
-        args:
-          - ./scripts/ci-e2e.sh
-        env:
-          - name: GINKGO_FOCUS
-            value: \[WINDOWS\]
-          - name: GINKGO_SKIP
-            value: ""
-          - name: TEST_WINDOWS
-            value: "true"
-        resources:
-          limits:
-            cpu: 4
-            memory: 9Gi
-          requests:
-            cpu: 4
-            memory: 9Gi
-        # docker-in-docker needs privileged mode
-        securityContext:
-          privileged: true
-      serviceAccountName: azure
-    annotations:
-      testgrid-dashboards: sig-cluster-lifecycle-cluster-api-provider-azure
-      testgrid-tab-name: capz-pr-e2e-windows-main
-      testgrid-alert-email: k8s-infra-staging-cluster-api-azure@kubernetes.io
-      description: Runs windows end-to-end tests that are not required for every PR.
   - name: pull-cluster-api-provider-azure-e2e-aks
     cluster: eks-prow-build-cluster
     path_alias: "sigs.k8s.io/cluster-api-provider-azure"
@@ -361,55 +316,6 @@ presubmits:
       testgrid-dashboards: sig-cluster-lifecycle-cluster-api-provider-azure
       testgrid-tab-name: capz-pr-conformance-main
       testgrid-alert-email: k8s-infra-staging-cluster-api-azure@kubernetes.io
-  - name: pull-cluster-api-provider-azure-conformance-azl3-with-ci-artifacts
-    cluster: eks-prow-build-cluster
-    path_alias: "sigs.k8s.io/cluster-api-provider-azure"
-    always_run: false
-    optional: true
-    decorate: true
-    decoration_config:
-      timeout: 4h
-    max_concurrency: 5
-    labels:
-      preset-dind-enabled: "true"
-      preset-kind-volume-mounts: "true"
-      preset-azure-community: "true"
-    branches:
-    - ^main$
-    extra_refs:
-    - org: kubernetes-sigs
-      repo: cloud-provider-azure
-      base_ref: master
-      path_alias: sigs.k8s.io/cloud-provider-azure
-    spec:
-      serviceAccountName: azure
-      containers:
-      - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260205-38cfa9523f-1.32
-        command:
-          - runner.sh
-        args:
-          - ./scripts/ci-conformance.sh
-        env:
-          - name: E2E_ARGS
-            value: "-kubetest.use-ci-artifacts"
-          - name: CONFORMANCE_FLAVOR
-            value: conformance-ci-artifacts-azl3
-          - name: AZL3_VERSION
-            value: "1.33.2"
-        # docker-in-docker needs privileged mode
-        securityContext:
-          privileged: true
-        resources:
-          limits:
-            cpu: 4
-            memory: 9Gi
-          requests:
-            cpu: 4
-            memory: 9Gi
-    annotations:
-      testgrid-dashboards: sig-cluster-lifecycle-cluster-api-provider-azure
-      testgrid-tab-name: capz-pr-conformance-azl3-main
-      testgrid-alert-email: k8s-infra-staging-cluster-api-azure@kubernetes.io
   - name: pull-cluster-api-provider-azure-conformance-with-ci-artifacts
     cluster: eks-prow-build-cluster
     path_alias: "sigs.k8s.io/cluster-api-provider-azure"
@@ -546,58 +452,6 @@ presubmits:
     annotations:
       testgrid-dashboards: sig-cluster-lifecycle-cluster-api-provider-azure
       testgrid-tab-name: capz-pr-conformance-dual-stack-k8s-ci-main
-  - name: pull-cluster-api-provider-azure-windows-with-ci-artifacts
-    cluster: eks-prow-build-cluster
-    path_alias: "sigs.k8s.io/cluster-api-provider-azure"
-    always_run: false
-    optional: true
-    decorate: true
-    decoration_config:
-      timeout: 4h
-    max_concurrency: 5
-    labels:
-      preset-dind-enabled: "true"
-      preset-kind-volume-mounts: "true"
-      preset-azure-community: "true"
-    branches:
-    - ^main$
-    extra_refs:
-    - org: kubernetes-sigs
-      repo: cloud-provider-azure
-      base_ref: master
-      path_alias: sigs.k8s.io/cloud-provider-azure
-    spec:
-      serviceAccountName: azure
-      containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260205-38cfa9523f-1.32
-          command:
-            - runner.sh
-          args:
-            - ./scripts/ci-conformance.sh
-          env:
-            - name: E2E_ARGS
-              value: "-kubetest.use-ci-artifacts"
-            - name: WINDOWS
-              value: "true"
-            - name: WINDOWS_FLAVOR
-              value: "containerd"
-            # Windows isn't really conformance, we typically run at 4 to keep the time reasonable (~45 mins)
-            - name: CONFORMANCE_NODES
-              value: "4"
-            - name: WINDOWS_SERVER_VERSION
-              value: "windows-2019"
-          securityContext:
-            privileged: true
-          resources:
-            limits:
-              cpu: 4
-              memory: 9Gi
-            requests:
-              cpu: 4
-              memory: 9Gi
-    annotations:
-      testgrid-dashboards: sig-cluster-lifecycle-cluster-api-provider-azure
-      testgrid-tab-name: capz-pr-upstream-k8s-ci-windows-containerd-main
   - name: pull-cluster-api-provider-azure-conformance-with-ci-artifacts-dra
     cluster: eks-prow-build-cluster
     path_alias: "sigs.k8s.io/cluster-api-provider-azure"
@@ -848,62 +702,6 @@ presubmits:
       testgrid-tab-name: capz-pr-conformance-custom-k8s-main
       testgrid-alert-email: k8s-infra-staging-cluster-api-azure@kubernetes.io
       description: Validates conformance with a custom Kubernetes build on the main branch.
-  - name: pull-cluster-api-provider-azure-windows-custom-builds
-    cluster: eks-prow-build-cluster
-    path_alias: "sigs.k8s.io/cluster-api-provider-azure"
-    always_run: false
-    optional: true
-    decorate: true
-    decoration_config:
-      timeout: 4h
-    max_concurrency: 5
-    labels:
-      preset-dind-enabled: "true"
-      preset-kind-volume-mounts: "true"
-      preset-azure-community: "true"
-    branches:
-    - ^main$
-    extra_refs:
-    - org: kubernetes-sigs
-      repo: cloud-provider-azure
-      base_ref: master
-      path_alias: sigs.k8s.io/cloud-provider-azure
-    - org: kubernetes
-      repo: kubernetes
-      base_ref: master
-      path_alias: k8s.io/kubernetes
-    spec:
-      serviceAccountName: azure
-      containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260205-38cfa9523f-1.32
-          command:
-            - runner.sh
-          args:
-            - ./scripts/ci-conformance.sh
-          env:
-            - name: TEST_K8S
-              value: "true"
-            - name: WINDOWS
-              value: "true"
-            # Windows isn't really conformance, we typically run at 4 to keep the time reasonable (~45 mins)
-            - name: CONFORMANCE_NODES
-              value: "4"
-            - name: WINDOWS_SERVER_VERSION
-              value: "windows-2019"
-          securityContext:
-            privileged: true
-          resources:
-            limits:
-              cpu: 4
-              memory: 9Gi
-            requests:
-              cpu: 4
-              memory: 9Gi
-    annotations:
-      testgrid-dashboards: sig-cluster-lifecycle-cluster-api-provider-azure
-      testgrid-tab-name: capz-pr-windows-containerd-upstream-custom-k8s-main
-      testgrid-alert-email: k8s-infra-staging-cluster-api-azure@kubernetes.io
-      description: Tests Windows support with custom builds on the main branch.
   - name: pull-cluster-api-provider-azure-load-test-custom-builds
     cluster: eks-prow-build-cluster
     decorate: true
