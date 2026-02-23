@@ -366,7 +366,8 @@ periodics:
     preset-dind-enabled: "true"
   decorate: true
   decoration_config:
-    timeout: 60m
+    timeout: 90m
+    grace_period: 15m
   extra_refs:
   - org: kubernetes
     repo: kubernetes
