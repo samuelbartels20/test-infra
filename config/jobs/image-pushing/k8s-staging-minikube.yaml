@@ -69,7 +69,7 @@ postsubmits:
             env:
               - name: LOG_TO_STDOUT
                 value: "y"
-    - name: post-minikube-kicbase
+    - name: post-minikube-kicbase-image
       cluster: k8s-infra-prow-build-trusted
       annotations:
         testgrid-dashboards: minikube-images, sig-k8s-infra-gcb
