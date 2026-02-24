@@ -71,6 +71,9 @@ periodics:
     testgrid-dashboards: kops-misc, sig-cluster-lifecycle-kops, sig-scalability-aws, sig-release-master-informing, amazon-ec2-release
     testgrid-tab-name: ec2-master-scale-performance
     testgrid-alert-email: kubernetes-sig-scale@googlegroups.com, eks-scalability@amazon.com, release-team@kubernetes.io
+    testgrid-days-of-results: "60"
+    testgrid-num-columns-recent: "3"
+    testgrid-num-failures-to-alert: "1"
   spec:
     containers:
     - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260205-38cfa9523f-master
