@@ -644,7 +644,7 @@ presubmits:
     labels:
       preset-dind-enabled: "true"
     decoration_config:
-      timeout: 90m
+      timeout: 100m # 10 minutes more than periodic because it needs to build from source.
       grace_period: 15m
     path_alias: k8s.io/kubernetes
     spec:
