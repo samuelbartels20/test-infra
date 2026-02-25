@@ -484,9 +484,9 @@ periodics:
         - ./scripts/ci-e2e.sh
       env:
         - name: GINKGO_FOCUS
-          value: "Workload cluster creation"
+          value: \[REQUIRED\]
         - name: GINKGO_SKIP
-          value: \[Managed Kubernetes\]|\[WINDOWS\]
+          value: ""
         - name: MGMT_CLUSTER_TYPE
           value: "aks"
       securityContext:
