@@ -115,4 +115,3 @@ postsubmits:
             env:
               - name: LOG_TO_STDOUT
                 value: "y"
-
