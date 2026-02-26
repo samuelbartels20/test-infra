@@ -409,7 +409,7 @@ presubmits:
               cd kubetest2-ec2 && GOPROXY=direct go install .
               VERSION=$(curl -Ls --retry 5 --retry-delay 10 --retry-all-errors https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/latest-fast.txt)
               kubetest2 ec2 \
-               --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/ \
+               --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast \
                --version $VERSION \
                --up \
                --down \
@@ -464,7 +464,7 @@ presubmits:
               cd kubetest2-ec2 && GOPROXY=direct go install .
               VERSION=$(curl -Ls --retry 5 --retry-delay 10 --retry-all-errors https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/latest-fast.txt)
               kubetest2 ec2 \
-               --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/ \
+               --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast \
                --external-cloud-provider true \
                --version $VERSION \
                --up \

@@ -177,7 +177,7 @@ presubmits:
 
               VERSION=$(curl -Ls https://dl.k8s.io/ci/fast/latest-fast.txt)
               kubetest2 ec2 \
-               --stage https://dl.k8s.io/ci/fast/ \
+               --stage https://dl.k8s.io/ci/fast \
                --external-cloud-provider true \
                --external-cloud-provider-image="${IMAGE_NAME}:${IMAGE_TAG}" \
                --version $VERSION \
