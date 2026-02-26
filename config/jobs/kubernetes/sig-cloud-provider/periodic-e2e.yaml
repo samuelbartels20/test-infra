@@ -37,7 +37,7 @@ periodics:
                      --query 'Parameters[0].[Value]' --output text)
             VERSION=$(curl -Ls --retry 5 --retry-delay 10 --retry-all-errors https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/latest-fast.txt)
             kubetest2 ec2 \
-             --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/ \
+             --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast \
              --version $VERSION \
              --worker-instance-type=g4dn.12xlarge \
              --device-plugin-nvidia true \
@@ -103,7 +103,7 @@ periodics:
             GOPROXY=direct go install sigs.k8s.io/provider-aws-test-infra/kubetest2-ec2@latest
             VERSION=$(curl -Ls --retry 5 --retry-delay 10 --retry-all-errors https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/latest-fast.txt)
             kubetest2 ec2 \
-             --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/ \
+             --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast \
              --version $VERSION \
              --feature-gates="AllAlpha=true,AllBeta=true,EventedPLEG=false" \
              --runtime-config="api/all=true" \
@@ -169,7 +169,7 @@ periodics:
             GOPROXY=direct go install sigs.k8s.io/provider-aws-test-infra/kubetest2-ec2@latest
             VERSION=$(curl -Ls --retry 5 --retry-delay 10 --retry-all-errors https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/latest-fast.txt)
             kubetest2 ec2 \
-             --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast/ \
+             --stage https://gcsweb.k8s.io/gcs/k8s-release-dev/ci/fast \
              --version $VERSION \
              --feature-gates="AllAlpha=true,AllBeta=true,EventedPLEG=false" \
              --runtime-config="api/all=true" \
