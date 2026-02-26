@@ -72,8 +72,8 @@ presubmits:
       preset-dind-enabled: "true"
     decorate: true
     path_alias: sigs.k8s.io/ingress2gateway
-    always_run: false
-    skip_report: true
+    always_run: true
+    skip_report: false
     spec:
       containers:
         - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260108-6ef4f0b08f-master
