@@ -234,7 +234,7 @@ periodics:
            --test=ginkgo \
            -- \
            --parallel=30 \
-           --test-package-url=https://dl.k8s.io/ \
+           --test-package-url=https://dl.k8s.io \
            --test-package-dir=ci/fast \
            --test-package-marker=latest-fast.txt \
            --focus-regex='Pods should be submitted and removed'
