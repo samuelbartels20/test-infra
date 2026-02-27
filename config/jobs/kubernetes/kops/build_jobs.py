@@ -1981,8 +1981,6 @@ def generate_presubmits_network_plugins():
                 aws_extra_flags.extend([
                     "--set=cluster.spec.networking.calico.wireguardEnabled=false",
                 ])
-            if plugin in ['cilium-eni']:
-                distro = 'u2204arm64' # pinned to 22.04 because of network issues with 24.04 and these CNIs
             if plugin == 'kubenet':
                 aws_extra_flags.extend([
                     "--topology=public",
