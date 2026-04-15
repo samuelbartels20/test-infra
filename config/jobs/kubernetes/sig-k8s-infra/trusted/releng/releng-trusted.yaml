@@ -367,6 +367,8 @@ periodics:
   name: ci-fast-forward
   cluster: k8s-infra-prow-build-trusted
   decorate: true
+  decoration_config:
+    skip_cloning: true
   extra_refs:
   - org: kubernetes
     repo: release
@@ -408,6 +410,8 @@ periodics:
     testgrid-dashboards: sig-release-releng-informing
     testgrid-tab-name: verify-image-signatures
   decorate: true
+  decoration_config:
+    skip_cloning: true
   extra_refs:
   - org: kubernetes-sigs
     repo: promo-tools

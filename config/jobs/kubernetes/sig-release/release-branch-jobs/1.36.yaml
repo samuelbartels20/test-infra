@@ -289,6 +289,7 @@ periodics:
   cluster: eks-prow-build-cluster
   decorate: true
   decoration_config:
+    skip_cloning: true
     timeout: 1h30m0s
   extra_refs:
   - base_ref: release-1.36
@@ -381,6 +382,7 @@ periodics:
   cluster: eks-prow-build-cluster
   decorate: true
   decoration_config:
+    skip_cloning: true
     timeout: 1h30m0s
   extra_refs:
   - base_ref: release-1.36
@@ -508,6 +510,7 @@ periodics:
   cluster: eks-prow-build-cluster
   decorate: true
   decoration_config:
+    skip_cloning: true
     timeout: 1h30m0s
   extra_refs:
   - base_ref: release-1.36
@@ -635,6 +638,7 @@ periodics:
   cluster: eks-prow-build-cluster
   decorate: true
   decoration_config:
+    skip_cloning: true
     timeout: 1h30m0s
   extra_refs:
   - base_ref: release-1.36

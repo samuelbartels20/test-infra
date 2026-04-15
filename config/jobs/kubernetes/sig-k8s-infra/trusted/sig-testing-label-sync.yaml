@@ -5,6 +5,8 @@ periodics:
   labels:
     app: label-sync
   decorate: true
+  decoration_config:
+    skip_cloning: true
   extra_refs:
   - org: kubernetes
     repo: test-infra

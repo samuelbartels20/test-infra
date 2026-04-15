@@ -130,6 +130,7 @@ periodics:
     path_alias: k8s.io/test-infra
   decoration_config:
     timeout: 3h
+    skip_cloning: true
   max_concurrency: 1
   annotations:
     testgrid-num-failures-to-alert: '18'
