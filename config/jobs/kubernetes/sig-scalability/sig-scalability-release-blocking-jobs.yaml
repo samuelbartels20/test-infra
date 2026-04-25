@@ -70,10 +70,10 @@ periodics:
       resources:
         requests:
           cpu: 6
-          memory: "39Gi"
+          memory: "16Gi"
         limits:
           cpu: 6
-          memory: "39Gi"
+          memory: "16Gi"
 
 # This is a sig-release-master-blocking job.
 # The frequency was cut to reduce infrastructure costs.
@@ -190,10 +190,10 @@ periodics:
       resources:
         requests:
           cpu: 7
-          memory: "32Gi"
+          memory: "27Gi"
         limits:
           cpu: 7
-          memory: "32Gi"
+          memory: "27Gi"
 
 - name: ci-kubernetes-e2e-gce-scale-performance-100
   tags:

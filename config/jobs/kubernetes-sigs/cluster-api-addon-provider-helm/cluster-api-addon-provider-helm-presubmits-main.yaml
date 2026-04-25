@@ -191,11 +191,11 @@ presubmits:
           privileged: true
         resources:
           requests:
-            cpu: 7
-            memory: 32Gi
+            cpu: 2
+            memory: 4Gi
           limits:
-            cpu: 7
-            memory: 32Gi
+            cpu: 2
+            memory: 4Gi
     annotations:
       testgrid-dashboards: sig-cluster-lifecycle-cluster-api-addon-provider-helm
       testgrid-tab-name: caaph-pr-capi-e2e-main

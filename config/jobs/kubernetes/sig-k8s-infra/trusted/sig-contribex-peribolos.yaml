@@ -32,6 +32,13 @@ postsubmits:
         volumeMounts:
         - name: github
           mountPath: /etc/github
+        resources:
+          limits:
+            cpu: 1
+            memory: 4Gi
+          requests:
+            cpu: 1
+            memory: 4Gi
       volumes:
       - name: github
         secret:
@@ -72,6 +79,13 @@ periodics:
       volumeMounts:
       - name: github
         mountPath: /etc/github
+      resources:
+        limits:
+          cpu: 1
+          memory: 4Gi
+        requests:
+          cpu: 1
+          memory: 4Gi
     volumes:
     - name: github
       secret:

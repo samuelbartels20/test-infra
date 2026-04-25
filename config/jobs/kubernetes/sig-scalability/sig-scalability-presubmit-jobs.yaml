@@ -1287,7 +1287,7 @@ presubmits:
         resources:
           requests:
             cpu: 7
-            memory: "32Gi"
+            memory: "27Gi"
           limits:
             cpu: 7
-            memory: "32Gi"
+            memory: "27Gi"

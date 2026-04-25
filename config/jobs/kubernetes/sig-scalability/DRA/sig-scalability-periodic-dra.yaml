@@ -418,10 +418,10 @@ periodics:
         resources:
           requests:
             cpu: "7"
-            memory: "28Gi"
+            memory: "16Gi"
           limits:
             cpu: "7"
-            memory: "28Gi"
+            memory: "16Gi"
 
   - name: ci-kubernetes-e2e-kops-gce-5000-node-dra-with-workload-ipalias-using-cl2
     tags:
@@ -533,7 +533,7 @@ periodics:
         resources:
           requests:
             cpu: "7"
-            memory: "28Gi"
+            memory: "24Gi"
           limits:
             cpu: "7"
-            memory: "28Gi"
+            memory: "24Gi"

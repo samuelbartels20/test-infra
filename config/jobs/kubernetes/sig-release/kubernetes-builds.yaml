@@ -69,10 +69,10 @@ periodics:
       resources:
         limits:
           cpu: "7"
-          memory: "34Gi"
+          memory: "24Gi"
         requests:
           cpu: "7"
-          memory: "34Gi"
+          memory: "24Gi"
   rerun_auth_config:
     github_team_slugs:
       - org: kubernetes

@@ -31,10 +31,10 @@ periodics:
           resources:
             requests:
               cpu: 6
-              memory: "28Gi"
+              memory: "16Gi"
             limits:
               cpu: 6
-              memory: "28Gi"
+              memory: "16Gi"
 
   - name: ci-kubernetes-integration-master-s390x
     interval: 1h
