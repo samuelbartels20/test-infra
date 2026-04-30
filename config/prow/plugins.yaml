@@ -1017,6 +1017,28 @@ require_matching_label:
     This PR is currently missing an area label, which is used to identify the modified component when generating release notes.
 
     Area labels can be added by org members by writing `/area ${COMPONENT}` in a comment
+- missing_label: needs-triage
+  org: kubernetes-sigs
+  repo: cluster-autoscaler
+  issues: true
+  prs: true
+  regexp: ^triage/
+  missing_comment: |
+    This issue is currently awaiting triage.
+
+    If SIG Autoscaling contributors determines this is a relevant issue, they will accept it by applying the `triage/accepted` label and provide further guidance.
+
+    The `triage/accepted` label can be added by org members by writing `/triage accepted` in a comment.
+- missing_label: do-not-merge/needs-area
+  org: kubernetes-sigs
+  repo: cluster-autoscaler
+  issues: false
+  prs: true
+  regexp: ^area/
+  missing_comment: |
+    This PR is currently missing an area label, which is used to identify the modified component when generating release notes.
+
+    Area labels can be added by org members by writing `/area ${COMPONENT}` in a comment
 - missing_label: needs-priority
   org: kubernetes-sigs
   repo: cluster-api
@@ -1679,6 +1701,10 @@ plugins:
     - require-matching-label
 
   kubernetes-sigs/cluster-api-operator:
+    plugins:
+    - require-matching-label
+
+  kubernetes-sigs/cluster-autoscaler:
     plugins:
     - require-matching-label
 
