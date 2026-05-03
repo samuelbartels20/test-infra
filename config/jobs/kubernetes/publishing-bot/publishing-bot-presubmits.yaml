@@ -89,7 +89,7 @@ presubmits:
     path_alias: k8s.io/publishing-bot
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260316-e86cefa561-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260427-56a97dfac3-master
           command:
             - runner.sh
           args:
@@ -116,7 +116,7 @@ presubmits:
     spec:
       serviceAccountName: gcb-builder-releng-test
       containers:
-        - image: gcr.io/k8s-staging-test-infra/image-builder:v20251215-d7853fe2a6
+        - image: gcr.io/k8s-staging-test-infra/image-builder:v20260419-39c657fdbf
           command:
             - /run.sh
           args:
