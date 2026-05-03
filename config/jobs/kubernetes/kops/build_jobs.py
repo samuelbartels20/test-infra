@@ -53,6 +53,15 @@ from build_vars import ( # pylint: disable=import-error, no-name-in-module
     upgrade_versions_list,
 )
 
+# Common flags applied to every AWS VPC CNI job. Without prefix
+# delegation, even modest instance types (t3.large = 33 pod IPs)
+# run out of pod IPs with  --parallel=25, causing flakes.
+AMAZON_VPC_ENV_FLAGS = [
+    "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
+    "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
+    "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
+]
+
 loader = jinja2.FileSystemLoader(searchpath=os.path.join(script_dir, "templates"))
 
 # A helper function to construct the URLs to our marker files
@@ -518,6 +527,8 @@ def generate_grid():
                             ])
                     elif networking in ['cilium-eni', 'amazon-vpc']:
                         extra_flags = ['--node-size=t3.large']
+                    if networking == 'amazon-vpc':
+                        extra_flags.extend(AMAZON_VPC_ENV_FLAGS)
                     if networking == 'kubenet':
                         extra_flags.extend([
                             "--topology=public",
@@ -1100,9 +1111,7 @@ def generate_misc():
                    extra_flags=[
                        "--node-size=r5d.xlarge",
                        "--control-plane-size=r5d.xlarge",
-                       "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                       "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                       "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
+                       *AMAZON_VPC_ENV_FLAGS,
                        "--set=spec.kubeAPIServer.logLevel=4",
                        "--set=spec.kubeAPIServer.auditLogMaxSize=2000000000",
                        "--set=spec.kubeAPIServer.enableAggregatorRouting=true",
@@ -1127,9 +1136,7 @@ def generate_misc():
                    extra_flags=[
                        "--node-size=r5d.xlarge",
                        "--control-plane-size=r5d.xlarge",
-                       "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                       "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                       "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
+                       *AMAZON_VPC_ENV_FLAGS,
                        "--set=spec.kubeAPIServer.logLevel=4",
                        "--set=spec.kubeAPIServer.auditLogMaxSize=2000000000",
                        "--set=spec.kubeAPIServer.enableAggregatorRouting=true",
@@ -1214,9 +1221,7 @@ def generate_misc():
                    extra_flags=[
                        "--node-size=r5d.xlarge",
                        "--control-plane-size=r5d.xlarge",
-                       "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                       "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                       "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
+                       *AMAZON_VPC_ENV_FLAGS,
                        "--set=spec.kubeAPIServer.logLevel=4",
                        "--set=spec.kubeAPIServer.auditLogMaxSize=2000000000",
                        "--set=spec.kubeAPIServer.enableAggregatorRouting=true",
@@ -1550,11 +1555,7 @@ def generate_network_plugins():
             distro = 'u2404'
             extra_flags = ['--node-size=t3.large']
             if plugin in ['amazon-vpc']:
-                extra_flags += [
-                    "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                    "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                    "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
-                ]
+                extra_flags += AMAZON_VPC_ENV_FLAGS
             if plugin == 'calico':
                 extra_flags.extend([
                     "--set=cluster.spec.networking.calico.wireguardEnabled=false",
@@ -2014,11 +2015,7 @@ def generate_presubmits_network_plugins():
                 "--node-size=t4g.large"
             ]
             if plugin == 'amazonvpc':
-                aws_extra_flags.extend([
-                    "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                    "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                    "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
-                ])
+                aws_extra_flags.extend(AMAZON_VPC_ENV_FLAGS)
             if plugin == 'calico':
                 aws_extra_flags.extend([
                     "--set=cluster.spec.networking.calico.wireguardEnabled=false",
@@ -2141,9 +2138,7 @@ def generate_presubmits_e2e():
             extra_flags=[
                 "--node-size=r5d.xlarge",
                 "--control-plane-size=r5d.xlarge",
-                "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
+                *AMAZON_VPC_ENV_FLAGS,
                 "--set=spec.kubeAPIServer.logLevel=4",
                 "--set=spec.kubeAPIServer.auditLogMaxSize=2000000000",
                 "--set=spec.kubeAPIServer.enableAggregatorRouting=true",
@@ -2161,9 +2156,7 @@ def generate_presubmits_e2e():
             extra_flags=[
                 "--node-size=r5d.xlarge",
                 "--control-plane-size=r5d.xlarge",
-                "--set=cluster.spec.networking.amazonVPC.env=ENABLE_PREFIX_DELEGATION=true",
-                "--set=cluster.spec.networking.amazonVPC.env=MINIMUM_IP_TARGET=80",
-                "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
+                *AMAZON_VPC_ENV_FLAGS,
                 "--set=spec.kubeAPIServer.logLevel=4",
                 "--set=spec.kubeAPIServer.auditLogMaxSize=2000000000",
                 "--set=spec.kubeAPIServer.enableAggregatorRouting=true",
