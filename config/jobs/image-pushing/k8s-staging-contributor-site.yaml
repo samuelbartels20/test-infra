@@ -23,6 +23,7 @@ postsubmits:
       #  - '^dependabot'
       branches:
         - ^master$
+        - ^main$
       spec:
         serviceAccountName: gcb-builder
         containers:
