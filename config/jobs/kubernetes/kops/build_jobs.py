@@ -510,6 +510,10 @@ def generate_grid():
                     # "Unable to connect to kvstore: timed out while waiting for etcd session"
                     if kops_version in ('1.32', '1.33') and networking == 'cilium-etcd':
                         continue
+                    # Fixes in https://github.com/kubernetes/kops/pull/18269
+                    # but not backported to earlier kops versions
+                    if kops_version in ('1.32', '1.33', '1.34') and networking in ('amazon-vpc', 'cilium-eni') and distro_short in ('deb11', 'rhel9'):
+                        continue
                     extra_flags = []
                     if 'arm64' in distro:
                         extra_flags.extend([
