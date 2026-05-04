@@ -64,7 +64,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb11, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb11, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-deb11
 
@@ -130,7 +130,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb12, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb12, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-deb12
 
@@ -196,7 +196,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb13, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb13, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-deb13
 
@@ -262,7 +262,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2204, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2204, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2204
 
@@ -328,7 +328,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2204, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2204, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2204arm64
 
@@ -394,7 +394,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2404, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2404, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2404
 
@@ -460,7 +460,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2404, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2404, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2404arm64
 
@@ -526,7 +526,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2510, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2510, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2510
 
@@ -592,7 +592,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2510, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2510, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2510arm64
 
@@ -658,7 +658,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2604, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2604, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2604
 
@@ -724,7 +724,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2604, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2604, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-u2604arm64
 
@@ -790,7 +790,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-al2023, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-al2023, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-al2023
 
@@ -856,7 +856,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-al2023, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-al2023, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-al2023arm64
 
@@ -922,7 +922,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rhel9, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rhel9, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-rhel9
 
@@ -988,7 +988,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rhel10, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rhel10, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-rhel10arm64
 
@@ -1054,7 +1054,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rocky9, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rocky9, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-rocky9
 
@@ -1120,7 +1120,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rocky10, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rocky10, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-rocky10arm64
 
@@ -1187,7 +1187,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-flatcar, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-flatcar, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-nftables-flatcar
 
@@ -1253,7 +1253,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-cos121, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-cos121, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-cos121
 
@@ -1319,7 +1319,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-cos121, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-cos121, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-cos121arm64
 
@@ -1385,7 +1385,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-cos125, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-cos125, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-cos125
 
@@ -1451,7 +1451,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-cos125, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-cos125, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-cos125arm64
 
@@ -1517,7 +1517,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-cosdev, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-cosdev, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-cosdev
 
@@ -1583,7 +1583,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-cosdev, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-cosdev, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-cosdevarm64
 
@@ -1649,7 +1649,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb12, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb12, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-deb12
 
@@ -1715,7 +1715,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb12, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb12, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-deb12arm64
 
@@ -1781,7 +1781,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb13, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb13, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-deb13
 
@@ -1847,7 +1847,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-deb13, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-deb13, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-deb13arm64
 
@@ -1913,7 +1913,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2204, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2204, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-u2204
 
@@ -1979,7 +1979,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2404, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2404, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-u2404
 
@@ -2045,7 +2045,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-u2404, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-u2404, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-u2404arm64
 
@@ -2111,7 +2111,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-umini2404, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-umini2404, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-umini2404
 
@@ -2177,7 +2177,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-umini2404, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-umini2404, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-umini2404arm64
 
@@ -2243,7 +2243,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rhel10, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rhel10, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-rhel10
 
@@ -2309,7 +2309,7 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rocky10, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rocky10, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-rocky10arm64
 
@@ -2375,6 +2375,6 @@ periodics:
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
     test.kops.k8s.io/networking: kindnet
-    testgrid-dashboards: kops-distro-rocky10, kops-gce, kops-k8s-stable, kops-latest, kops-nftables, sig-cluster-lifecycle-kops
+    testgrid-dashboards: kops-distro-rocky10, kops-gce, kops-k8s-stable, kops-latest, kops-network-kindnet, kops-nftables, sig-cluster-lifecycle-kops
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-gce-nftables-rocky10

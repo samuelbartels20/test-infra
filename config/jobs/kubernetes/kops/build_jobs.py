@@ -267,6 +267,8 @@ def build_test(cloud='aws',
         f"kops-k8s-{k8s_version}",
         f"kops-{kops_version or 'latest'}",
     ]
+    if networking:
+        dashboards.append(f"kops-network-{networking}")
     if cloud == 'gce':
         dashboards.extend(['kops-gce'])
     if cloud == 'azure':
