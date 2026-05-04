@@ -1151,7 +1151,7 @@ periodics:
         make install-deployer-tf
 
         export TF_VAR_powervs_system_type=s1022
-        kubetest2 tf --powervs-image-name CentOS-Stream-10 --powervs-memory 32 \
+        kubetest2 tf --powervs-image-name CentOS-Stream-10 \
           --powervs-ssh-key k8s-prow-sshkey \
           --ssh-private-key /etc/secret-volume/ssh-privatekey \
           --workers-count 2 --cluster-name conformance-$(date +%s) \
@@ -1167,10 +1167,10 @@ periodics:
       resources:
         limits:
           cpu: "2"
-          memory: 14Gi
+          memory: 8Gi
         requests:
           cpu: "2"
-          memory: 14Gi
+          memory: 8Gi
       securityContext:
         privileged: true
 - annotations:
