@@ -33,7 +33,7 @@ periodics:
       secret:
         secretName: scale-pull-cache-token
     containers:
-    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260427-56a97dfac3-master
+    - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
       volumeMounts:
       - name: cache-secret
         readOnly: true
@@ -115,7 +115,7 @@ periodics:
   spec:
     serviceAccountName: prow-build
     containers:
-    - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20260427-56a97dfac3-master
+    - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20260504-c27e3ff179-master
       command:
       - runner.sh
       args:
@@ -225,7 +225,7 @@ periodics:
   spec:
     serviceAccountName: prow-build
     containers:
-    - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20260427-56a97dfac3-master
+    - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20260504-c27e3ff179-master
       command:
       - runner.sh
       args:
