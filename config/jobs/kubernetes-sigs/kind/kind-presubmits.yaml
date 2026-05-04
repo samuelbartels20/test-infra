@@ -57,7 +57,7 @@ presubmits:
       preset-dind-enabled: "true"
     spec:
       containers:
-      - image: gcr.io/k8s-staging-test-infra/krte:v20241125-b4ea3e27a6-experimental
+      - image: gcr.io/k8s-staging-test-infra/krte:v20260427-56a97dfac3-master
         command:
         - wrapper.sh
         - make
