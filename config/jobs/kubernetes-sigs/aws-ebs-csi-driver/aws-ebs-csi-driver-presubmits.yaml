@@ -416,6 +416,40 @@ presubmits:
       testgrid-tab-name: pull-ebs-external-test-eks
       description: kubernetes/kubernetes external test on pull request on eks
       testgrid-num-columns-recent: '30'
+  - name: pull-aws-ebs-csi-driver-external-test-eks-oldest
+    cluster: eks-prow-build-cluster
+    decorate: true
+    optional: true
+    skip_report: true
+    skip_branches:
+      - gh-pages
+    skip_if_only_changed: "^docs/|^examples/|.md$|OWNERS$|^.github/"
+    labels:
+      preset-service-account: "true"
+      preset-dind-enabled: "true"
+      preset-aws-credential-aws-shared-testing: "true"
+    spec:
+      containers:
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260316-e86cefa561-master
+          command:
+            - runner.sh
+          args:
+            - make
+            - test-e2e-external-eks-oldest
+          securityContext:
+            privileged: true
+          resources:
+            limits:
+              cpu: "2"
+              memory: "8Gi"
+            requests:
+              cpu: "2"
+              memory: "8Gi"
+    annotations:
+      testgrid-dashboards: provider-aws-ebs-csi-driver, amazon-ec2-presubmits
+      testgrid-tab-name: pull-ebs-external-test-eks-oldest
+      description: kubernetes/kubernetes external test on EKS pinned to the oldest supported kubernetes version.
+      testgrid-num-columns-recent: '30'
   - name: pull-aws-ebs-csi-driver-external-test-kustomize
     cluster: eks-prow-build-cluster
     decorate: true
