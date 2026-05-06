@@ -171,10 +171,10 @@ periodics:
           resources:
             requests:
               cpu: "1500m"
-              memory: 10Gi
+              memory: 5Gi
             limits:
               cpu: "1500m"
-              memory: 10Gi
+              memory: 5Gi
           command:
             - runner.sh
           args:
@@ -189,7 +189,7 @@ periodics:
               CLUSTER_NAME="e2e-node-$(date +%s)"
 
               set +o errexit
-              kubetest2 tf --powervs-image-name CentOS-Stream-10 --powervs-memory 32 \
+              kubetest2 tf --powervs-image-name CentOS-Stream-10 \
                 --powervs-region ${BOSKOS_REGION} --powervs-zone ${BOSKOS_ZONE} \
                 --powervs-service-id ${BOSKOS_RESOURCE_ID} --powervs-ssh-key k8s-prow-sshkey \
                 --ssh-private-key /etc/secret-volume/ssh-privatekey \
@@ -258,7 +258,7 @@ periodics:
               make install-deployer-tf
 
               export TF_VAR_controlplane_powervs_memory=32
-              kubetest2 tf --powervs-image-name CentOS-Stream-10 --powervs-memory 32 \
+              kubetest2 tf --powervs-image-name CentOS-Stream-10 \
                 --powervs-ssh-key k8s-prow-sshkey \
                 --ssh-private-key /etc/secret-volume/ssh-privatekey \
                 --workers-count 2 --cluster-name alpha-enabled-$(date +%s) \
@@ -312,7 +312,7 @@ periodics:
 
               export TF_VAR_powervs_system_type=s1022
               export TF_VAR_controlplane_powervs_memory=32
-              kubetest2 tf --powervs-image-name CentOS-Stream-10 --powervs-memory 32 \
+              kubetest2 tf --powervs-image-name CentOS-Stream-10 \
                 --powervs-ssh-key k8s-prow-sshkey \
                 --ssh-private-key /etc/secret-volume/ssh-privatekey \
                 --workers-count 2 --cluster-name e2e-default-$(date +%s) \
@@ -365,7 +365,7 @@ periodics:
               make install-deployer-tf
 
               export TF_VAR_powervs_system_type=s1022
-              kubetest2 tf --powervs-image-name CentOS-Stream-10 --powervs-memory 32 \
+              kubetest2 tf --powervs-image-name CentOS-Stream-10 \
                 --powervs-ssh-key k8s-prow-sshkey \
                 --ssh-private-key /etc/secret-volume/ssh-privatekey \
                 --workers-count 2 --cluster-name e2e-slow-$(date +%s) \
@@ -399,10 +399,10 @@ periodics:
           resources:
             requests:
               cpu: 2
-              memory: "14Gi"
+              memory: "5Gi"
             limits:
               cpu: 2
-              memory: "14Gi"
+              memory: "5Gi"
           command:
             - runner.sh
           args:
@@ -414,7 +414,7 @@ periodics:
               #Setup of kubetest2 tf deployer and ginkgo tester
               make install-deployer-tf
 
-              kubetest2 tf --powervs-image-name CentOS-Stream-10 --powervs-memory 32 \
+              kubetest2 tf --powervs-image-name CentOS-Stream-10 \
                 --powervs-ssh-key k8s-prow-sshkey \
                 --ssh-private-key /etc/secret-volume/ssh-privatekey \
                 --workers-count 2 --cluster-name e2e-serial-$(date +%s) \
