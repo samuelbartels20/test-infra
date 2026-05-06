@@ -29,13 +29,13 @@ presubmits:
     decorate: true
     cluster: eks-prow-build-cluster
     branches:
-    - ^master$
+    - ^main$
     run_if_changed: '^communication/slack-config'
     annotations:
       testgrid-dashboards: sig-contribex-slack-infra
     spec:
       containers:
-      - image: gcr.io/k8s-staging-slack-infra/tempelis:v20200909-1eb97f5
+      - image: gcr.io/k8s-staging-slack-infra/tempelis:v20260505-4a08de2
         command:
         - /tempelis
         args:
