@@ -130,6 +130,13 @@ periodics:
       - files
       - --manifests=/home/prow/go/src/github.com/kubernetes/k8s.io/artifacts/
       - --confirm
+      resources:
+        limits:
+          cpu: 2
+          memory: "4Gi"
+        requests:
+          cpu: 2
+          memory: "4Gi"
   annotations:
     testgrid-dashboards: sig-release-releng-blocking, sig-k8s-infra-k8sio
     testgrid-alert-email: k8s-infra-alerts@kubernetes.io, release-managers+alerts@kubernetes.io
@@ -175,10 +182,10 @@ periodics:
         # request most of one node 🚀
         requests:
           cpu: 7
-          memory: "40Gi"
+          memory: "26Gi"
         limits:
           cpu: 7
-          memory: "40Gi"
+          memory: "26Gi"
   annotations:
     testgrid-dashboards: sig-release-releng-blocking, sig-k8s-infra-k8sio
     testgrid-alert-email: k8s-infra-alerts@kubernetes.io, release-managers+alerts@kubernetes.io
@@ -213,6 +220,13 @@ periodics:
       - --log-level=debug
       - --certificate-identity-regexp=(keyless@projectsigstore.iam.gserviceaccount.com)|(krel-trust@k8s-releng-prod.iam.gserviceaccount.com)
       - --certificate-oidc-issuer=https://accounts.google.com
+      resources:
+        requests:
+          cpu: 1
+          memory: 1Gi
+        limits:
+          cpu: 1
+          memory: 1Gi
   annotations:
     testgrid-dashboards: sig-release-releng-informing
     testgrid-alert-email: release-managers+alerts@kubernetes.io
@@ -281,6 +295,13 @@ periodics:
         - --from-days=7
       args:
         - sigcheck
+      resources:
+        requests:
+          cpu: 1
+          memory: 1Gi
+        limits:
+          cpu: 1
+          memory: 1Gi
   rerun_auth_config:
     github_team_slugs:
       - org: kubernetes
@@ -318,6 +339,13 @@ periodics:
             value: 767373bbdcb8270361b96548387bf2a9ad0d48758c35
           - name: FASTLY_SERVICE_NAME
             value: dl.k8s.io
+        resources:
+          requests:
+            cpu: 1
+            memory: 1Gi
+          limits:
+            cpu: 1
+            memory: 1Gi
   rerun_auth_config:
     github_team_slugs:
       - org: kubernetes
@@ -334,7 +362,7 @@ periodics:
   extra_refs:
   - org: kubernetes-sigs
     repo: downloadkubernetes
-    base_ref: main
+    base_ref: master
     path_alias: sigs.k8s.io/downloadkubernetes
   spec:
     serviceAccountName: gcb-builder
@@ -355,6 +383,13 @@ periodics:
             value: 5d7373bbdcb8270361b96548387bf2a9ad0d48758c35
           - name: FASTLY_SERVICE_NAME
             value: dl.k8s.dev
+        resources:
+          requests:
+            cpu: 1
+            memory: 1Gi
+          limits:
+            cpu: 1
+            memory: 1Gi
   rerun_auth_config:
     github_team_slugs:
       - org: kubernetes

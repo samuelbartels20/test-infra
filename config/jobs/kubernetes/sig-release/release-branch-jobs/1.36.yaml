@@ -28,10 +28,10 @@ periodics:
       resources:
         limits:
           cpu: "6"
-          memory: 28Gi
+          memory: 16Gi
         requests:
           cpu: "6"
-          memory: 28Gi
+          memory: 16Gi
       securityContext:
         allowPrivilegeEscalation: false
     securityContext:
@@ -1228,13 +1228,22 @@ periodics:
       image: gcr.io/k8s-staging-releng/k8s-ci-builder:latest-default
       imagePullPolicy: Always
       name: ""
+      env:
+        - name: FASTLY_SERVICE_NAME
+          value: dl.k8s.io
+        - name: FASTLY_API_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: fastly-purge-token
+              key: token
+      # docker-in-docker needs privileged mode
       resources:
         limits:
           cpu: "7"
-          memory: 34Gi
+          memory: 24Gi
         requests:
           cpu: "7"
-          memory: 34Gi
+          memory: 24Gi
       securityContext:
         privileged: true
 - annotations:
@@ -5181,10 +5190,10 @@ presubmits:
         resources:
           limits:
             cpu: "4"
-            memory: 36Gi
+            memory: 16Gi
           requests:
             cpu: "4"
-            memory: 36Gi
+            memory: 16Gi
         securityContext:
           allowPrivilegeEscalation: false
       securityContext:

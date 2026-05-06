@@ -114,14 +114,13 @@ presubmits:
             value: ""
           - name: KUBE_HACK_TOOLS_GOTOOLCHAIN
             value: auto
-          # TODO: direct copy from pull-kubernetes-bazel-test, tune these
           resources:
             limits:
               cpu: 4
-              memory: "36Gi"
+              memory: "16Gi"
             requests:
               cpu: 4
-              memory: "36Gi"
+              memory: "16Gi"
 periodics:
   - interval: 1h
     name: ci-kubernetes-unit
