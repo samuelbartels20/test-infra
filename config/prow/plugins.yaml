@@ -241,6 +241,10 @@ label:
         - sig-storage-leads
         - sig-testing-leads
         - sig-windows-leads
+    kubernetes-sigs/provider-aws-test-infra:
+      - label: skip-review
+        allowed_teams:
+        - provider-aws-test-infra-admins
 
 lgtm:
 - repos:

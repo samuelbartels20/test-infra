@@ -798,6 +798,20 @@ tide:
     - kubernetes/k8s.io
     - kubernetes/test-infra
   - repos:
+    - kubernetes-sigs/provider-aws-test-infra
+    labels: # provider-aws-test-infra-admins team gates the skip-review label via plugins.yaml restricted_labels
+    - skip-review
+    - "cncf-cla: yes"
+    missingLabels:
+    - do-not-merge
+    - do-not-merge/blocked-paths
+    - do-not-merge/contains-merge-commits
+    - do-not-merge/hold
+    - do-not-merge/invalid-commit-message
+    - do-not-merge/invalid-owners-file
+    - do-not-merge/release-note-label-needed
+    - do-not-merge/work-in-progress
+  - repos:
     - kubernetes-sigs/cloud-provider-azure
     labels:
     - lgtm

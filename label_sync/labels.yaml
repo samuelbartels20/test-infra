@@ -2508,6 +2508,13 @@ repos:
           - name: area/release-infra
         target: both
         addedBy: label
+  kubernetes-sigs/provider-aws-test-infra:
+    labels:
+      - color: 0ffa16
+        description: Indicates a PR is trusted, used by tide for auto-merging PRs.
+        name: skip-review
+        target: prs
+        addedBy: provider-aws-test-infra-admins
   kubernetes-sigs/prow:
     labels:
       - color: 0052cc
