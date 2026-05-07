@@ -252,6 +252,48 @@ presubmits:
           requests:
             cpu: "7"
             memory: 9000Mi
+  # mimic pull-kubernetes-e2e-kind, but using kind built in this PR on arm64
+  - name: pull-kind-e2e-kubernetes-arm64
+    cluster: k8s-infra-prow-build
+    skip_if_only_changed: '(^site/)|(^images/)|(^logo/)|(^.github/)|(.md$)|(OWNERS$)|(^SECURITY_CONTACTS$)|(^netlify.toml$)'
+    optional: false
+    labels:
+      preset-dind-enabled: "true"
+    decorate: true
+    extra_refs:
+    - org: kubernetes
+      repo: kubernetes
+      base_ref: master
+      path_alias: k8s.io/kubernetes
+    path_alias: sigs.k8s.io/kind
+    decoration_config:
+      timeout: 60m
+      grace_period: 15m
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+      containers:
+      - image: gcr.io/k8s-staging-test-infra/krte:v20260504-419d814ca6-master
+        command:
+        - wrapper.sh
+        - bash
+        - -c
+        - cd ./../../k8s.io/kubernetes && ./../../sigs.k8s.io/kind/hack/ci/e2e.sh
+        env:
+        - name: LABEL_FILTER
+          value: "Feature: isEmpty && !Slow && !Disruptive && !Flaky"
+        - name: PARALLEL
+          value: "true"
+        # we need privileged mode in order to do docker in docker
+        securityContext:
+          privileged: true
+        resources:
+          limits:
+            cpu: "7"
+            memory: 9000Mi
+          requests:
+            cpu: "7"
+            memory: 9000Mi
   # for testing new configurations *without* blocking merges*
   # NOTE: changes should generally be synced to pull-kubernetes-e2e-kind-canary
   - name: pull-kind-e2e-kubernetes-canary
