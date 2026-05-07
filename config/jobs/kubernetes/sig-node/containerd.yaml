@@ -416,6 +416,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 70m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -460,6 +461,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 70m
+    skip_cloning: true
   spec:
     containers:
     - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
@@ -864,6 +866,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 70m
+    skip_cloning: true
   spec:
     containers:
     - command:

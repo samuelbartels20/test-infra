@@ -1039,6 +1039,7 @@ periodics:
     path_alias: k8s.io/test-infra
   decoration_config:
     timeout: 4h
+    skip_cloning: true
   spec:
     serviceAccountName: node-e2e-tests
     containers:

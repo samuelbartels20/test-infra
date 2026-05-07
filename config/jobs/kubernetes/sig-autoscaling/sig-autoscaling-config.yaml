@@ -538,6 +538,7 @@ periodics:
       path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 260m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -580,6 +581,7 @@ periodics:
       path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 260m
+    skip_cloning: true
   spec:
     containers:
     - command:

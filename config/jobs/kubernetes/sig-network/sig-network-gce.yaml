@@ -351,6 +351,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 80m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -395,6 +396,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 60m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -438,6 +440,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 80m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -481,6 +484,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -520,6 +524,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 80m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -564,6 +569,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 80m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -608,6 +614,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -648,6 +655,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 340m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -691,6 +699,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 340m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -733,6 +742,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 200m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -774,6 +784,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 70m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -817,6 +828,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -860,6 +872,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -908,6 +921,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -946,6 +960,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -986,6 +1001,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 520m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -1026,6 +1042,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 520m
+    skip_cloning: true
   spec:
     containers:
     - command:
@@ -1068,6 +1085,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 170m
+    skip_cloning: true
   spec:
     containers:
     - command:

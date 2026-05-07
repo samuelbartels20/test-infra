@@ -13,6 +13,7 @@ periodics:
     path_alias: k8s.io/kubernetes
   decoration_config:
     timeout: 8h40m0s
+    skip_cloning: true
   interval: 12h
   labels:
     preset-k8s-ssh: "true"

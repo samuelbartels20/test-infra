@@ -57,6 +57,7 @@ periodics:
   decorate: true
   decoration_config:
     timeout: 1h20m0s
+    skip_cloning: true
   extra_refs:
   - base_ref: release-1.33
     org: kubernetes
@@ -988,6 +989,7 @@ periodics:
   decorate: true
   decoration_config:
     timeout: 3h20m0s
+    skip_cloning: true
   extra_refs:
   - base_ref: release-1.33
     org: kubernetes
@@ -1035,6 +1037,7 @@ periodics:
   decorate: true
   decoration_config:
     timeout: 2h20m0s
+    skip_cloning: true
   extra_refs:
   - base_ref: release-1.33
     org: kubernetes
@@ -1079,6 +1082,7 @@ periodics:
   decorate: true
   decoration_config:
     timeout: 3h20m0s
+    skip_cloning: true
   extra_refs:
   - base_ref: release-1.33
     org: kubernetes
@@ -1121,6 +1125,7 @@ periodics:
   decorate: true
   decoration_config:
     timeout: 11h20m0s
+    skip_cloning: true
   extra_refs:
   - base_ref: release-1.33
     org: kubernetes
@@ -1165,6 +1170,7 @@ periodics:
   decorate: true
   decoration_config:
     timeout: 2h50m0s
+    skip_cloning: true
   extra_refs:
   - base_ref: release-1.33
     org: kubernetes

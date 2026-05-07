@@ -19,6 +19,7 @@ periodics:
     decorate: true
     decoration_config:
       timeout: 90m
+      skip_cloning: true
     extra_refs:
     - org: kubernetes
       repo: kubernetes
@@ -112,6 +113,7 @@ periodics:
     decorate: true
     decoration_config:
       timeout: 90m
+      skip_cloning: true
     extra_refs:
     - org: kubernetes
       repo: kubernetes
@@ -225,6 +227,7 @@ periodics:
     decorate: true
     decoration_config:
       timeout: 90m
+      skip_cloning: true
     extra_refs:
     - org: kubernetes
       repo: kubernetes
@@ -356,6 +359,7 @@ periodics:
     decorate: true
     decoration_config:
       timeout: 90m
+      skip_cloning: true
     extra_refs:
     - org: kubernetes
       repo: kubernetes
@@ -487,6 +491,7 @@ periodics:
     decorate: true
     decoration_config:
       timeout: 90m
+      skip_cloning: true
     extra_refs:
     - org: kubernetes
       repo: kubernetes
