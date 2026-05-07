@@ -2772,14 +2772,17 @@ test_groups:
   name: periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-azure-ovn-multi-a-a
 - gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-azure-ovn-multi-x-ax
   name: periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-azure-ovn-multi-x-ax
-- gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-a-a
+- days_of_results: 60
+  gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-a-a
   name: periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-a-a
 - days_of_results: 60
   gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-a-a-to-x-a
   name: periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-a-a-to-x-a
-- gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-day-0-a-x
+- days_of_results: 60
+  gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-day-0-a-x
   name: periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-day-0-a-x
-- gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-x-ax
+- days_of_results: 60
+  gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-x-ax
   name: periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-x-ax
 - days_of_results: 60
   gcs_prefix: test-platform-results/logs/periodic-ci-openshift-multiarch-main-nightly-4.23-ocp-e2e-gcp-ovn-multi-x-x-to-a-x
