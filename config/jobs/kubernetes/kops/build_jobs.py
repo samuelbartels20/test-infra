@@ -491,7 +491,7 @@ def generate_grid():
                 for kops_version in kops_versions:
                     networking_arg = networking.replace('amazon-vpc', 'amazonvpc').replace('kuberouter', 'kube-router')
                     distro_short = distro_shortener(distro)
-                    if kops_version in ('1.32', '1.33'):
+                    if kops_version == '1.33':
                         # kindnet pre-1.0 requires GLIBC_2.32
                         if distro == 'debian11' and networking == 'kindnet':
                             continue
@@ -510,11 +510,11 @@ def generate_grid():
                         continue
                     # Tests flake due to cilium 1.16 config issue. Fixed with cilium 1.18 in kops 1.34+
                     # "Unable to connect to kvstore: timed out while waiting for etcd session"
-                    if kops_version in ('1.32', '1.33') and networking == 'cilium-etcd':
+                    if kops_version == '1.33' and networking == 'cilium-etcd':
                         continue
                     # Fixes in https://github.com/kubernetes/kops/pull/18269
                     # but not backported to earlier kops versions
-                    if kops_version in ('1.32', '1.33', '1.34') and networking in ('amazon-vpc', 'cilium-eni') and distro_short in ('deb11', 'rhel9'):
+                    if kops_version in ('1.33', '1.34') and networking in ('amazon-vpc', 'cilium-eni') and distro_short in ('deb11', 'rhel9'):
                         continue
                     extra_flags = []
                     if 'arm64' in distro:
@@ -576,7 +576,7 @@ def generate_grid():
             for k8s_version in [v for v in k8s_versions if v != 'master']:
                 for kops_version in kops_versions:
                     # cilium-etcd + gce support was added in kops 1.36+
-                    if networking == 'cilium-etcd' and kops_version in ('1.32', '1.33', '1.34', '1.35', '1.36'):
+                    if networking == 'cilium-etcd' and kops_version in ('1.33', '1.34', '1.35'):
                         continue
                     distro_short = distro_shortener(distro)
                     extra_flags = ["--gce-service-account=default"] # Workaround for test-infra#24747
