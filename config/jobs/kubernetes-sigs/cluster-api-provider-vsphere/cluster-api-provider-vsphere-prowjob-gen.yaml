@@ -32,6 +32,12 @@ prow_ignored:
         # This version is tested by default
         # - version: "9.1"
         #   apiVersion: "v1alpha5"
+        - version: "9.2"
+          apiVersion: "v1alpha2"
+        - version: "9.2"
+          apiVersion: "v1alpha5"
+        - version: "9.2"
+          apiVersion: "v1alpha6"
     release-1.16:
       testImage: "gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-1.35"
       # interval for coverage job
