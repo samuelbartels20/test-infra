@@ -273,7 +273,7 @@ presubmits:
       nodeSelector:
         kubernetes.io/arch: arm64
       containers:
-      - image: gcr.io/k8s-staging-test-infra/krte:v20260504-419d814ca6-master
+      - image: gcr.io/k8s-staging-test-infra/krte:v20260508-c7322a4e56-master
         command:
         - wrapper.sh
         - bash
