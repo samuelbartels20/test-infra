@@ -249,7 +249,7 @@ presubmits:
             -- \
             --test-args="-test.timeout=60m" \
             --test-package-marker=stable.txt \
-            --parallel=25
+            --parallel=20
         securityContext:
           privileged: true
         env:
@@ -522,7 +522,7 @@ presubmits:
             -- \
             --test-args="-test.timeout=60m" \
             --test-package-marker=stable.txt \
-            --parallel=25
+            --parallel=20
         securityContext:
           privileged: true
         env:
@@ -1140,7 +1140,7 @@ presubmits:
             -- \
             --test-args="-test.timeout=60m" \
             --test-package-marker=stable.txt \
-            --parallel=25
+            --parallel=20
         securityContext:
           privileged: true
         env:
@@ -1413,7 +1413,7 @@ presubmits:
             -- \
             --test-args="-test.timeout=60m" \
             --test-package-marker=stable.txt \
-            --parallel=25
+            --parallel=20
         securityContext:
           privileged: true
         env:

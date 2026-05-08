@@ -356,6 +356,7 @@ def presubmit_test(branch='master',
         kops_image = None
         kops_ssh_user = 'kops'
         kops_ssh_key_path = '/etc/ssh-key-secret/ssh-private'
+        test_parallelism = 20
         if build_cluster is None:
             build_cluster = 'k8s-infra-prow-build'
 
