@@ -17,6 +17,7 @@
 # supporting kubernetes builds, kind installation, etc.
 
 FROM debian:bookworm
+ARG TARGETARCH
 
 # arg that specifies the image name (for debugging)
 ARG IMAGE_ARG
@@ -77,7 +78,7 @@ RUN echo "Installing Packages ..." \
         && if [ -z "${GO_VERSION}" ]; then \
             GO_VERSION=$(curl --retry 6 --retry-connrefused -fsSL "https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/${K8S_BRANCH}/.go-version"); \
         fi \
-        && export GO_TARBALL="go${GO_VERSION}.linux-amd64.tar.gz" \
+        && export GO_TARBALL="go${GO_VERSION}.linux-${TARGETARCH}.tar.gz" \
         && curl -fsSL "https://go.dev/dl/${GO_TARBALL}" --output "${GO_TARBALL}" \
         && tar xzf "${GO_TARBALL}" -C /usr/local \
         && rm "${GO_TARBALL}"\
