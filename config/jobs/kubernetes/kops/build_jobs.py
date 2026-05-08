@@ -62,6 +62,15 @@ AMAZON_VPC_ENV_FLAGS = [
     "--set=cluster.spec.networking.amazonVPC.env=WARM_IP_TARGET=10",
 ]
 
+# Common flags applied to every Cilium ENI job. Mirrors the AWS VPC CNI
+# tuning above: enable IPv4 prefix delegation and raise per-node IP
+# watermarks so a t3.large doesn't run out of pod IPs under --parallel=25.
+CILIUM_ENI_EXTRA_CONFIG_FLAGS = [
+    "--set=cluster.spec.networking.cilium.extraConfig=aws-enable-prefix-delegation=true",
+    "--set=cluster.spec.networking.cilium.extraConfig=ipam-min-allocate=80",
+    "--set=cluster.spec.networking.cilium.extraConfig=ipam-pre-allocate=10",
+]
+
 loader = jinja2.FileSystemLoader(searchpath=os.path.join(script_dir, "templates"))
 
 # A helper function to construct the URLs to our marker files
@@ -536,6 +545,9 @@ def generate_grid():
                         extra_flags = ['--node-size=t3.large']
                     if networking == 'amazon-vpc':
                         extra_flags.extend(AMAZON_VPC_ENV_FLAGS)
+                    # extraConfig field added in kops 1.34; older versions reject the --set.
+                    if networking == 'cilium-eni' and kops_version not in ('1.32', '1.33'):
+                        extra_flags.extend(CILIUM_ENI_EXTRA_CONFIG_FLAGS)
                     if networking == 'kubenet':
                         extra_flags.extend([
                             "--topology=public",
@@ -1563,6 +1575,8 @@ def generate_network_plugins():
             extra_flags = ['--node-size=t3.large']
             if plugin in ['amazon-vpc']:
                 extra_flags += AMAZON_VPC_ENV_FLAGS
+            if plugin == 'cilium-eni':
+                extra_flags += CILIUM_ENI_EXTRA_CONFIG_FLAGS
             if plugin == 'calico':
                 extra_flags.extend([
                     "--set=cluster.spec.networking.calico.wireguardEnabled=false",
@@ -2023,6 +2037,8 @@ def generate_presubmits_network_plugins():
             ]
             if plugin == 'amazonvpc':
                 aws_extra_flags.extend(AMAZON_VPC_ENV_FLAGS)
+            if plugin == 'cilium-eni':
+                aws_extra_flags.extend(CILIUM_ENI_EXTRA_CONFIG_FLAGS)
             if plugin == 'calico':
                 aws_extra_flags.extend([
                     "--set=cluster.spec.networking.calico.wireguardEnabled=false",
