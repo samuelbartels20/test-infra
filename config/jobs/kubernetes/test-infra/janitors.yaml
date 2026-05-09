@@ -62,6 +62,13 @@ periodics:
       - --exclude-tags=Shared=Ignore
       - --clean-ecr-repositories=aws-ebs-csi-driver
       image: gcr.io/k8s-staging-boskos/aws-janitor:v20260428-2afb3ad
+      resources:
+        requests:
+          cpu: 1
+          memory: "2Gi"
+        limits:
+          cpu: 1
+          memory: "2Gi"
   annotations:
     testgrid-dashboards: sig-testing-maintenance
     testgrid-tab-name: ci-aws-janitor

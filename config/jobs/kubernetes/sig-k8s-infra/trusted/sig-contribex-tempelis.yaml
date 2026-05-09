@@ -25,6 +25,13 @@ postsubmits:
         - name: tempelis-creds
           mountPath: /etc/slack-auth
           readOnly: true
+        resources:
+          requests:
+            cpu: 1
+            memory: 2Gi
+          limits:
+            cpu: 1
+            memory: 2Gi
       volumes:
       - name: tempelis-creds
         secret:
