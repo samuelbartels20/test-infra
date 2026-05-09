@@ -204,7 +204,8 @@ def build_test(cloud='aws',
         tmpl_file = "periodic-scenario.yaml.jinja"
         if build_cluster == "k8s-infra-kops-prow-build":
             env['KOPS_STATE_STORE'] = "s3://k8s-kops-ci-prow-state-store"
-            env['KOPS_DNS_DOMAIN'] = "tests-kops-aws.k8s.io"
+            if 'KOPS_DNS_DOMAIN' not in env:
+                env['KOPS_DNS_DOMAIN'] = "tests-kops-aws.k8s.io"
         env['CLOUD_PROVIDER'] = cloud
         env['KUBE_SSH_USER'] = kops_ssh_user
         if not cluster_name:
@@ -213,8 +214,11 @@ def build_test(cloud='aws',
             # reference the cluster name is to just pass it into the script
             # so it may be used by both kubetest2-kops and the rest of the script.
             name_hash = hashlib.md5(job_name.encode()).hexdigest()
-            cluster_name = f"e2e-{name_hash[0:10]}-{name_hash[12:17]}.tests-kops-aws.k8s.io"
-            env['CLUSTER_NAME'] = cluster_name
+            cluster_name = f"e2e-{name_hash[0:10]}-{name_hash[12:17]}"
+            if 'KOPS_DNS_DOMAIN' not in env:
+                env['CLUSTER_NAME'] = cluster_name + ".tests-kops-aws.k8s.io"
+            else:
+                env['CLUSTER_NAME'] = cluster_name + "." + env['KOPS_DNS_DOMAIN']
         if extra_flags:
             env['KOPS_EXTRA_FLAGS'] = " ".join(extra_flags)
 
@@ -1696,6 +1700,65 @@ def generate_upgrades():
         )
     return results
 
+gossip_upgrade_pairs = [
+    ("1.35", "v1.35.4", "latest", "v1.36.0"),
+]
+
+def generate_periodics_upgrades_gossip():
+    results = []
+    for cloud in ("aws", "azure", "gce"):
+        for kops_a, k8s_a, kops_b, k8s_b in gossip_upgrade_pairs:
+            results.append(build_test(
+                name_override=f"kops-{cloud}-upgrade-gossip",
+                cloud=cloud,
+                distro='u2404',
+                networking="cilium",
+                k8s_version="stable",
+                kops_channel="alpha",
+                extra_dashboards=["kops-upgrades"],
+                runs_per_day=1,
+                test_timeout_minutes=120,
+                scenario="upgrade-ab-gossip",
+                env={
+                    'KOPS_DNS_DOMAIN': 'tests-kops-aws.k8s.local',
+                    'KOPS_VERSION_A': kops_a,
+                    'K8S_VERSION_A': k8s_a,
+                    'KOPS_VERSION_B': kops_b,
+                    'K8S_VERSION_B': k8s_b,
+                    'KOPS_SKIP_E2E': '1',
+                    'KOPS_TEMPLATE': 'tests/e2e/templates/many-addons.yaml.tmpl',
+                    'KOPS_CONTROL_PLANE_SIZE': '3',
+                },
+            ))
+    return results
+
+def generate_presubmits_upgrades_gossip():
+    results = []
+    for cloud in ("aws", "azure", "gce"):
+        for kops_a, k8s_a, kops_b, k8s_b in gossip_upgrade_pairs:
+            results.append(presubmit_test(
+                name=f"pull-kops-{cloud}-upgrade-gossip",
+                optional=True,
+                cloud=cloud,
+                distro='u2404',
+                networking='cilium',
+                k8s_version='stable',
+                kops_channel='alpha',
+                test_timeout_minutes=120,
+                scenario='upgrade-ab-gossip',
+                env={
+                    'KOPS_DNS_DOMAIN': 'tests-kops-aws.k8s.local',
+                    'KOPS_VERSION_A': kops_a,
+                    'K8S_VERSION_A': k8s_a,
+                    'KOPS_VERSION_B': kops_b,
+                    'K8S_VERSION_B': k8s_b,
+                    'KOPS_SKIP_E2E': '1',
+                    'KOPS_TEMPLATE': 'tests/e2e/templates/many-addons.yaml.tmpl',
+                    'KOPS_CONTROL_PLANE_SIZE': '3',
+                },
+            ))
+    return results
+
 ###############################
 # kops-presubmits-scale.yaml #
 ###############################
@@ -2601,6 +2664,7 @@ periodics_files = {
     'kops-periodics-upgrades.yaml': generate_upgrades,
     'kops-periodics-versions.yaml': generate_versions,
     'kops-periodics-pipeline.yaml': generate_pipeline,
+    'kops-periodics-upgrades-gossip.yaml': generate_periodics_upgrades_gossip,
 }
 
 presubmits_files = {
@@ -2610,6 +2674,7 @@ presubmits_files = {
     'kops-presubmits-e2e.yaml': generate_presubmits_e2e,
     'kops-presubmits-scale.yaml': generate_presubmits_scale,
     'kops-presubmits-branch.yaml': generate_presubmits_branch,
+    'kops-presubmits-upgrades-gossip.yaml': generate_presubmits_upgrades_gossip,
 }
 
 def output_file(filename: pathlib.Path, contents: str, verify: bool) -> str:
