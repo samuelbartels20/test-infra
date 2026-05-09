@@ -21,6 +21,13 @@ postsubmits:
         - files
         - --manifests=/home/prow/go/src/github.com/kubernetes/k8s.io/artifacts/
         - --confirm
+        resources:
+          limits:
+            cpu: 2
+            memory: 4Gi
+          requests:
+            cpu: 2
+            memory: 4Gi
     annotations:
       testgrid-dashboards: sig-release-releng-blocking, sig-k8s-infra-k8sio
       testgrid-alert-email: k8s-infra-alerts@kubernetes.io, release-managers+alerts@kubernetes.io
@@ -71,10 +78,10 @@ postsubmits:
           # request most of one node 🚀
           requests:
             cpu: 7
-            memory: "40Gi"
+            memory: 16Gi
           limits:
             cpu: 7
-            memory: "40Gi"
+            memory: 16Gi
     annotations:
       testgrid-dashboards: sig-release-releng-blocking, sig-k8s-infra-k8sio
       testgrid-alert-email: k8s-infra-alerts@kubernetes.io, release-managers+alerts@kubernetes.io
@@ -104,6 +111,14 @@ postsubmits:
         - cip
         - --thin-manifest-dir=/home/prow/go/src/github.com/kubernetes-sigs/promo-tools/canary
         - --confirm
+        resources:
+          # request most of one node 🚀
+          requests:
+            cpu: 2
+            memory: 4Gi
+          limits:
+            cpu: 2
+            memory: 4Gi
     annotations:
       testgrid-dashboards: sig-release-releng-informing
       testgrid-alert-email: release-managers+alerts@kubernetes.io

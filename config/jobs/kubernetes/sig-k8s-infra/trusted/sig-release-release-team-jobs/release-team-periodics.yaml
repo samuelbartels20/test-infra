@@ -18,6 +18,13 @@ periodics:
     - image: gcr.io/k8s-staging-infra-tools/k8s-infra:latest
       command:
       - ./release-team/hack/sync-enhancements-github-project-beta.sh
+      resources:
+        requests:
+          cpu: 1
+          memory: 2Gi
+        limits:
+          cpu: 1
+          memory: 2Gi
       env:
         - name: GITHUB_PROJECT_BETA_NUMBER
           value: "241"
@@ -43,6 +50,13 @@ periodics:
     - image: gcr.io/k8s-staging-infra-tools/k8s-infra:latest
       command:
       - ./release-team/hack/sync-bug-triage-github-project-beta.sh
+      resources:
+        requests:
+          cpu: 1
+          memory: 2Gi
+        limits:
+          cpu: 1
+          memory: 2Gi
       env:
         - name: PROJECT_NUMBER
           value: "80"

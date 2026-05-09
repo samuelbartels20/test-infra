@@ -25,13 +25,13 @@ postsubmits:
       - image: gcr.io/k8s-staging-infra-tools/k8s-infra:latest
         command:
         - ./infra/gcp/terraform/k8s-infra-prow-build-trusted/deploy.sh
-      resources:
-        limits:
-          cpu: 100m
-          memory: 512Mi
-        requests:
-          cpu: 100m
-          memory: 512Mi
+        resources:
+          limits:
+            cpu: 100m
+            memory: 512Mi
+          requests:
+            cpu: 100m
+            memory: 512Mi
     reporter_config:
       slack:
         channel: "prow-alerts"
