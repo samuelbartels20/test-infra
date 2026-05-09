@@ -83,13 +83,15 @@ presubmits:
     optional: true
     skip_report: false
     labels:
-      preset-k8s-ssh: "true"
+      preset-service-account: "true"
+      preset-kops-azure-cred-wi: "true"
     max_concurrency: 1
     decorate: true
     decoration_config:
       timeout: 150m
     path_alias: k8s.io/kops
     spec:
+      serviceAccountName: azure
       containers:
       - image: us-central1-docker.pkg.dev/k8s-staging-test-infra/images/kubekins-e2e:v20260504-c27e3ff179-master
         imagePullPolicy: Always
@@ -100,10 +102,6 @@ presubmits:
         securityContext:
           privileged: true
         env:
-        - name: KUBE_SSH_KEY_PATH
-          value: /etc/ssh-key-secret/ssh-private
-        - name: KUBE_SSH_USER
-          value: kops
         - name: GINKGO_NO_COLOR
           value: "TRUE"
         - name: GOPATH

@@ -82,7 +82,7 @@ periodics:
   cron: '47 21-23/24 * * *'
   labels:
     preset-service-account: "true"
-    preset-aws-ssh: "true"
+    preset-kops-azure-cred-wi: "true"
   max_concurrency: 1
   decorate: true
   decoration_config:
@@ -94,7 +94,7 @@ periodics:
     workdir: true
     path_alias: k8s.io/kops
   spec:
-    serviceAccountName: prowjob-default-sa
+    serviceAccountName: azure
     containers:
     - command:
       - runner.sh
@@ -152,8 +152,6 @@ periodics:
   cluster: k8s-infra-prow-build
   cron: '19 11-23/24 * * *'
   labels:
-    preset-service-account: "true"
-    preset-aws-ssh: "true"
   max_concurrency: 1
   decorate: true
   decoration_config:
@@ -165,7 +163,7 @@ periodics:
     workdir: true
     path_alias: k8s.io/kops
   spec:
-    serviceAccountName: prowjob-default-sa
+    serviceAccountName: k8s-kops-test
     containers:
     - command:
       - runner.sh
