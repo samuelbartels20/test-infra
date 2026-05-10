@@ -495,7 +495,7 @@ periodics:
           args:
             - make
             - kind-image-build
-            - test-tas-e2e-baseline 
+            - test-tas-e2e-baseline
           # docker-in-docker needs privileged mode
           securityContext:
             privileged: true
