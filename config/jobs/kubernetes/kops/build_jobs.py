@@ -1726,7 +1726,6 @@ def generate_periodics_upgrades_gossip():
                     'KOPS_VERSION_B': kops_b,
                     'K8S_VERSION_B': k8s_b,
                     'KOPS_SKIP_E2E': '1',
-                    'KOPS_TEMPLATE': 'tests/e2e/templates/many-addons.yaml.tmpl',
                     'KOPS_CONTROL_PLANE_SIZE': '3',
                 },
             ))
@@ -1753,7 +1752,6 @@ def generate_presubmits_upgrades_gossip():
                     'KOPS_VERSION_B': kops_b,
                     'K8S_VERSION_B': k8s_b,
                     'KOPS_SKIP_E2E': '1',
-                    'KOPS_TEMPLATE': 'tests/e2e/templates/many-addons.yaml.tmpl',
                     'KOPS_CONTROL_PLANE_SIZE': '3',
                 },
             ))
