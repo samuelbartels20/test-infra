@@ -70,7 +70,7 @@ periodics:
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-gossip
 
-# {"cloud": "azure", "distro": "u2404", "extra_flags": "--control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
+# {"cloud": "azure", "distro": "u2404", "extra_flags": "--control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public", "feature_flags": "Azure", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
 - name: e2e-kops-azure-gossip
   cron: '20 1-23/8 * * *'
   labels:
@@ -101,6 +101,7 @@ periodics:
           --up --down \
           --cloud-provider=azure \
           --create-args="--image='Canonical:ubuntu-24_04-lts:server:24.04.202512100' --channel=alpha --networking=cilium --control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public" \
+          --env=KOPS_FEATURE_FLAGS=Azure \
           --kops-version-marker=https://storage.googleapis.com/k8s-staging-kops/kops/releases/markers/master/latest-ci-updown-green.txt \
           --kubernetes-version=https://dl.k8s.io/release/stable.txt \
           --test=kops \
@@ -126,6 +127,7 @@ periodics:
     test.kops.k8s.io/cloud: azure
     test.kops.k8s.io/distro: u2404
     test.kops.k8s.io/extra_flags: --control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public
+    test.kops.k8s.io/feature_flags: Azure
     test.kops.k8s.io/k8s_version: stable
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
@@ -134,7 +136,7 @@ periodics:
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-azure-gossip
 
-# {"cloud": "gce", "distro": "u2404", "extra_flags": "--control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
+# {"cloud": "gce", "distro": "u2404", "extra_flags": "--control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public --gce-service-account=default", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
 - name: e2e-kops-gce-gossip
   cron: '2 1-23/8 * * *'
   labels:
@@ -164,7 +166,7 @@ periodics:
           --up --down \
           --cloud-provider=gce \
           --admin-access=0.0.0.0/0 \
-          --create-args="--image='ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20260422' --channel=alpha --networking=cilium --control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public" \
+          --create-args="--image='ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20260422' --channel=alpha --networking=cilium --control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public --gce-service-account=default" \
           --kops-version-marker=https://storage.googleapis.com/k8s-staging-kops/kops/releases/markers/master/latest-ci-updown-green.txt \
           --kubernetes-version=https://dl.k8s.io/release/stable.txt \
           --test=kops \
@@ -193,7 +195,7 @@ periodics:
   annotations:
     test.kops.k8s.io/cloud: gce
     test.kops.k8s.io/distro: u2404
-    test.kops.k8s.io/extra_flags: --control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public
+    test.kops.k8s.io/extra_flags: --control-plane-count=1 --node-count=4 --dns=private --api-loadbalancer-type=public --gce-service-account=default
     test.kops.k8s.io/k8s_version: stable
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
@@ -336,7 +338,7 @@ periodics:
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-aws-gossip-ha
 
-# {"cloud": "azure", "distro": "u2404", "extra_flags": "--control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
+# {"cloud": "azure", "distro": "u2404", "extra_flags": "--control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public", "feature_flags": "Azure", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
 - name: e2e-kops-azure-gossip-ha
   cron: '27 5-23/8 * * *'
   labels:
@@ -367,6 +369,7 @@ periodics:
           --up --down \
           --cloud-provider=azure \
           --create-args="--image='Canonical:ubuntu-24_04-lts:server:24.04.202512100' --channel=alpha --networking=cilium --control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public" \
+          --env=KOPS_FEATURE_FLAGS=Azure \
           --kops-version-marker=https://storage.googleapis.com/k8s-staging-kops/kops/releases/markers/master/latest-ci-updown-green.txt \
           --kubernetes-version=https://dl.k8s.io/release/stable.txt \
           --test=kops \
@@ -392,6 +395,7 @@ periodics:
     test.kops.k8s.io/cloud: azure
     test.kops.k8s.io/distro: u2404
     test.kops.k8s.io/extra_flags: --control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public
+    test.kops.k8s.io/feature_flags: Azure
     test.kops.k8s.io/k8s_version: stable
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
@@ -400,7 +404,7 @@ periodics:
     testgrid-days-of-results: '90'
     testgrid-tab-name: kops-azure-gossip-ha
 
-# {"cloud": "gce", "distro": "u2404", "extra_flags": "--control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
+# {"cloud": "gce", "distro": "u2404", "extra_flags": "--control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public --gce-service-account=default", "k8s_version": "stable", "kops_channel": "alpha", "kops_version": "latest", "networking": "cilium"}
 - name: e2e-kops-gce-gossip-ha
   cron: '25 3-23/8 * * *'
   labels:
@@ -430,7 +434,7 @@ periodics:
           --up --down \
           --cloud-provider=gce \
           --admin-access=0.0.0.0/0 \
-          --create-args="--image='ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20260422' --channel=alpha --networking=cilium --control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public" \
+          --create-args="--image='ubuntu-os-cloud/ubuntu-2404-noble-amd64-v20260422' --channel=alpha --networking=cilium --control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public --gce-service-account=default" \
           --kops-version-marker=https://storage.googleapis.com/k8s-staging-kops/kops/releases/markers/master/latest-ci-updown-green.txt \
           --kubernetes-version=https://dl.k8s.io/release/stable.txt \
           --test=kops \
@@ -459,7 +463,7 @@ periodics:
   annotations:
     test.kops.k8s.io/cloud: gce
     test.kops.k8s.io/distro: u2404
-    test.kops.k8s.io/extra_flags: --control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public
+    test.kops.k8s.io/extra_flags: --control-plane-count=3 --node-count=4 --dns=private --api-loadbalancer-type=public --gce-service-account=default
     test.kops.k8s.io/k8s_version: stable
     test.kops.k8s.io/kops_channel: alpha
     test.kops.k8s.io/kops_version: latest
