@@ -1751,6 +1751,14 @@ def generate_periodics_upgrades_gossip():
 def generate_periodics_gossip():
     results = []
     for cloud in ("aws", "azure", "gce", "do"):
+        extra_flags = [
+            "--control-plane-count=1",
+            "--node-count=4",
+            "--dns=private",
+            "--api-loadbalancer-type=public",
+        ]
+        if cloud == 'gce':
+            extra_flags.append("--gce-service-account=default")
         results.append(build_test(
             name_override=f"kops-{cloud}-gossip",
             cloud=cloud,
@@ -1758,17 +1766,21 @@ def generate_periodics_gossip():
             networking='cilium',
             k8s_version='stable',
             kops_channel='alpha',
+            feature_flags=['Azure'] if cloud == 'azure' else (),
             runs_per_day=3,
             extra_dashboards=['kops-misc'],
             env={'KOPS_DNS_DOMAIN': 'k8s.local'},
-            extra_flags=[
-                "--control-plane-count=1",
-                "--node-count=4",
-                "--dns=private",
-                "--api-loadbalancer-type=public",
-            ],
+            extra_flags=extra_flags,
         ))
     for cloud in ("aws", "azure", "gce", "do"):
+        extra_flags = [
+            "--control-plane-count=3",
+            "--node-count=4",
+            "--dns=private",
+            "--api-loadbalancer-type=public",
+        ]
+        if cloud == 'gce':
+            extra_flags.append("--gce-service-account=default")
         results.append(build_test(
             name_override=f"kops-{cloud}-gossip-ha",
             cloud=cloud,
@@ -1776,15 +1788,11 @@ def generate_periodics_gossip():
             networking='cilium',
             k8s_version='stable',
             kops_channel='alpha',
+            feature_flags=['Azure'] if cloud == 'azure' else (),
             runs_per_day=3,
             extra_dashboards=['kops-misc'],
             env={'KOPS_DNS_DOMAIN': 'k8s.local'},
-            extra_flags=[
-                "--control-plane-count=3",
-                "--node-count=4",
-                "--dns=private",
-                "--api-loadbalancer-type=public",
-            ],
+            extra_flags=extra_flags,
         ))
     return results
 
@@ -1794,6 +1802,14 @@ def generate_periodics_gossip():
 def generate_presubmits_gossip():
     results = []
     for cloud in ("aws", "azure", "gce", "do"):
+        extra_flags = [
+            "--control-plane-count=1",
+            "--node-count=4",
+            "--dns=private",
+            "--api-loadbalancer-type=public",
+        ]
+        if cloud == 'gce':
+            extra_flags.append("--gce-service-account=default")
         results.append(presubmit_test(
             name=f"pull-kops-{cloud}-gossip",
             cloud=cloud,
@@ -1801,16 +1817,20 @@ def generate_presubmits_gossip():
             networking='cilium',
             k8s_version='stable',
             kops_channel='alpha',
+            feature_flags=['Azure'] if cloud == 'azure' else (),
             optional=True,
             env={'KOPS_DNS_DOMAIN': 'k8s.local'},
-            extra_flags=[
-                "--control-plane-count=1",
-                "--node-count=4",
-                "--dns=private",
-                "--api-loadbalancer-type=public",
-            ],
+            extra_flags=extra_flags,
         ))
     for cloud in ("aws", "azure", "gce", "do"):
+        extra_flags = [
+            "--control-plane-count=3",
+            "--node-count=4",
+            "--dns=private",
+            "--api-loadbalancer-type=public",
+        ]
+        if cloud == 'gce':
+            extra_flags.append("--gce-service-account=default")
         results.append(presubmit_test(
             name=f"pull-kops-{cloud}-gossip-ha",
             cloud=cloud,
@@ -1818,14 +1838,10 @@ def generate_presubmits_gossip():
             networking='cilium',
             k8s_version='stable',
             kops_channel='alpha',
+            feature_flags=['Azure'] if cloud == 'azure' else (),
             optional=True,
             env={'KOPS_DNS_DOMAIN': 'k8s.local'},
-            extra_flags=[
-                "--control-plane-count=3",
-                "--node-count=4",
-                "--dns=private",
-                "--api-loadbalancer-type=public",
-            ],
+            extra_flags=extra_flags,
         ))
     return results
 
