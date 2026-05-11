@@ -161,6 +161,13 @@ def build_test(cloud='aws',
         if build_cluster is None:
             build_cluster = 'k8s-infra-prow-build'
 
+    elif cloud == 'do':
+        kops_image = None
+        kops_ssh_user = None
+        kops_ssh_key_path = None
+        if build_cluster is None:
+            build_cluster = 'k8s-infra-prow-build'
+
     validation_wait = None
     if distro in ('flatcar', 'flatcararm64'):
         validation_wait = '20m'
@@ -377,6 +384,13 @@ def presubmit_test(branch='master',
         kops_image = gce_distro_images[distro]
         kops_ssh_user = 'prow'
         kops_ssh_key_path = '/etc/ssh-key-secret/ssh-private'
+        if build_cluster is None:
+            build_cluster = 'k8s-infra-prow-build'
+
+    elif cloud == 'do':
+        kops_image = None
+        kops_ssh_user = None
+        kops_ssh_key_path = None
         if build_cluster is None:
             build_cluster = 'k8s-infra-prow-build'
 
@@ -1731,6 +1745,90 @@ def generate_periodics_upgrades_gossip():
             ))
     return results
 
+##############################
+# kops-periodics-gossip.yaml #
+##############################
+def generate_periodics_gossip():
+    results = []
+    for cloud in ("aws", "azure", "gce", "do"):
+        results.append(build_test(
+            name_override=f"kops-{cloud}-gossip",
+            cloud=cloud,
+            distro='u2404',
+            networking='cilium',
+            k8s_version='stable',
+            kops_channel='alpha',
+            runs_per_day=3,
+            extra_dashboards=['kops-misc'],
+            env={'KOPS_DNS_DOMAIN': 'k8s.local'},
+            extra_flags=[
+                "--control-plane-count=1",
+                "--node-count=4",
+                "--dns=private",
+                "--api-loadbalancer-type=public",
+            ],
+        ))
+    for cloud in ("aws", "azure", "gce", "do"):
+        results.append(build_test(
+            name_override=f"kops-{cloud}-gossip-ha",
+            cloud=cloud,
+            distro='u2404',
+            networking='cilium',
+            k8s_version='stable',
+            kops_channel='alpha',
+            runs_per_day=3,
+            extra_dashboards=['kops-misc'],
+            env={'KOPS_DNS_DOMAIN': 'k8s.local'},
+            extra_flags=[
+                "--control-plane-count=3",
+                "--node-count=4",
+                "--dns=private",
+                "--api-loadbalancer-type=public",
+            ],
+        ))
+    return results
+
+###############################
+# kops-presubmits-gossip.yaml #
+###############################
+def generate_presubmits_gossip():
+    results = []
+    for cloud in ("aws", "azure", "gce", "do"):
+        results.append(presubmit_test(
+            name=f"pull-kops-{cloud}-gossip",
+            cloud=cloud,
+            distro='u2404',
+            networking='cilium',
+            k8s_version='stable',
+            kops_channel='alpha',
+            optional=True,
+            env={'KOPS_DNS_DOMAIN': 'k8s.local'},
+            extra_flags=[
+                "--control-plane-count=1",
+                "--node-count=4",
+                "--dns=private",
+                "--api-loadbalancer-type=public",
+            ],
+        ))
+    for cloud in ("aws", "azure", "gce", "do"):
+        results.append(presubmit_test(
+            name=f"pull-kops-{cloud}-gossip-ha",
+            cloud=cloud,
+            distro='u2404',
+            networking='cilium',
+            k8s_version='stable',
+            kops_channel='alpha',
+            optional=True,
+            env={'KOPS_DNS_DOMAIN': 'k8s.local'},
+            extra_flags=[
+                "--control-plane-count=3",
+                "--node-count=4",
+                "--dns=private",
+                "--api-loadbalancer-type=public",
+            ],
+        ))
+    return results
+
 def generate_presubmits_upgrades_gossip():
     results = []
     for cloud in ("aws", "azure", "gce"):
@@ -2662,6 +2760,7 @@ periodics_files = {
     'kops-periodics-upgrades.yaml': generate_upgrades,
     'kops-periodics-versions.yaml': generate_versions,
     'kops-periodics-pipeline.yaml': generate_pipeline,
+    'kops-periodics-gossip.yaml': generate_periodics_gossip,
     'kops-periodics-upgrades-gossip.yaml': generate_periodics_upgrades_gossip,
 }
 
@@ -2672,6 +2771,7 @@ presubmits_files = {
     'kops-presubmits-e2e.yaml': generate_presubmits_e2e,
     'kops-presubmits-scale.yaml': generate_presubmits_scale,
     'kops-presubmits-branch.yaml': generate_presubmits_branch,
+    'kops-presubmits-gossip.yaml': generate_presubmits_gossip,
     'kops-presubmits-upgrades-gossip.yaml': generate_presubmits_upgrades_gossip,
 }
 
