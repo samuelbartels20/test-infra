@@ -773,7 +773,7 @@ repos:
         name: area/vertical-pod-autoscaler/prometheus
         target: both
         addedBy: label
-      - color: 5319e7
+      - color: "5319e7"
         description: Issues or PRs related to the Addon Resizer component
         name: area/addon-resizer
         target: both
@@ -979,7 +979,7 @@ repos:
         target: issues
         prowPlugin: label
         addedBy: Release enhancements team ONLY
-      - color: 108737
+      - color: "108737"
         description: Denotes an enhancement issue is actively being tracked by the Release Team
         name: tracked/yes
         target: issues
