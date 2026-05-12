@@ -540,6 +540,9 @@ presubmits:
       repo: perf-tests
       base_ref: master
       path_alias: k8s.io/perf-tests
+    annotations:
+      testgrid-dashboards: presubmits-kubernetes-scalability
+      testgrid-tab-name: pull-kubernetes-gce-master-scale-performance-100-apiserver-restart
     spec:
       serviceAccountName: prow-build
       containers:
