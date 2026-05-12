@@ -519,7 +519,6 @@ presubmits:
     cluster: k8s-infra-prow-build
     always_run: false
     optional: true
-    skip_report: true
     branches:
     - master
     - main
