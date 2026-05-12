@@ -12,7 +12,7 @@ periodics:
     base_ref: master
   spec:
     containers:
-    - image: us-docker.pkg.dev/k8s-infra-prow/images/checkconfig:v20260511-5c4ab968b
+    - image: us-docker.pkg.dev/k8s-infra-prow/images/checkconfig:v20260512-6cce86636
       command:
       - checkconfig
       args:
