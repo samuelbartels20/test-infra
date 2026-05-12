@@ -1715,7 +1715,7 @@ def generate_upgrades():
     return results
 
 gossip_upgrade_pairs = [
-    ("1.35", "v1.35.4", "latest", "v1.36.0"),
+    ("1.35", "v1.35.5", "latest", "v1.36.1"),
 ]
 
 def generate_periodics_upgrades_gossip():
@@ -1729,12 +1729,13 @@ def generate_periodics_upgrades_gossip():
                 networking="cilium",
                 k8s_version="stable",
                 kops_channel="alpha",
+                feature_flags=['Azure'] if cloud == 'azure' else (),
                 extra_dashboards=["kops-upgrades"],
-                runs_per_day=1,
+                runs_per_day=3,
                 test_timeout_minutes=120,
                 scenario="upgrade-ab-gossip",
                 env={
-                    'KOPS_DNS_DOMAIN': 'tests-kops-aws.k8s.local',
+                    'KOPS_DNS_DOMAIN': 'k8s.local',
                     'KOPS_VERSION_A': kops_a,
                     'K8S_VERSION_A': k8s_a,
                     'KOPS_VERSION_B': kops_b,
@@ -1857,10 +1858,11 @@ def generate_presubmits_upgrades_gossip():
                 networking='cilium',
                 k8s_version='stable',
                 kops_channel='alpha',
+                feature_flags=['Azure'] if cloud == 'azure' else (),
                 test_timeout_minutes=120,
                 scenario='upgrade-ab-gossip',
                 env={
-                    'KOPS_DNS_DOMAIN': 'tests-kops-aws.k8s.local',
+                    'KOPS_DNS_DOMAIN': 'k8s.local',
                     'KOPS_VERSION_A': kops_a,
                     'K8S_VERSION_A': k8s_a,
                     'KOPS_VERSION_B': kops_b,

@@ -40,15 +40,15 @@ presubmits:
         - name: GOPATH
           value: /home/prow/go
         - name: KOPS_DNS_DOMAIN
-          value: "tests-kops-aws.k8s.local"
+          value: "k8s.local"
         - name: KOPS_VERSION_A
           value: "1.35"
         - name: K8S_VERSION_A
-          value: "v1.35.4"
+          value: "v1.35.5"
         - name: KOPS_VERSION_B
           value: "latest"
         - name: K8S_VERSION_B
-          value: "v1.36.0"
+          value: "v1.36.1"
         - name: KOPS_SKIP_E2E
           value: "1"
         - name: KOPS_CONTROL_PLANE_SIZE
@@ -72,7 +72,7 @@ presubmits:
       testgrid-days-of-results: '90'
       testgrid-tab-name: pull-kops-aws-upgrade-gossip
 
-  # {"cloud": "azure", "distro": "u2404", "k8s_version": "stable", "kops_channel": "alpha", "networking": "cilium"}
+  # {"cloud": "azure", "distro": "u2404", "feature_flags": "Azure", "k8s_version": "stable", "kops_channel": "alpha", "networking": "cilium"}
   - name: pull-kops-azure-upgrade-gossip
     cluster: k8s-infra-prow-build
     branches:
@@ -105,15 +105,15 @@ presubmits:
         - name: GOPATH
           value: /home/prow/go
         - name: KOPS_DNS_DOMAIN
-          value: "tests-kops-aws.k8s.local"
+          value: "k8s.local"
         - name: KOPS_VERSION_A
           value: "1.35"
         - name: K8S_VERSION_A
-          value: "v1.35.4"
+          value: "v1.35.5"
         - name: KOPS_VERSION_B
           value: "latest"
         - name: K8S_VERSION_B
-          value: "v1.36.0"
+          value: "v1.36.1"
         - name: KOPS_SKIP_E2E
           value: "1"
         - name: KOPS_CONTROL_PLANE_SIZE
@@ -130,6 +130,7 @@ presubmits:
     annotations:
       test.kops.k8s.io/cloud: azure
       test.kops.k8s.io/distro: u2404
+      test.kops.k8s.io/feature_flags: Azure
       test.kops.k8s.io/k8s_version: stable
       test.kops.k8s.io/kops_channel: alpha
       test.kops.k8s.io/networking: cilium
@@ -173,15 +174,15 @@ presubmits:
         - name: GOPATH
           value: /home/prow/go
         - name: KOPS_DNS_DOMAIN
-          value: "tests-kops-aws.k8s.local"
+          value: "k8s.local"
         - name: KOPS_VERSION_A
           value: "1.35"
         - name: K8S_VERSION_A
-          value: "v1.35.4"
+          value: "v1.35.5"
         - name: KOPS_VERSION_B
           value: "latest"
         - name: K8S_VERSION_B
-          value: "v1.36.0"
+          value: "v1.36.1"
         - name: KOPS_SKIP_E2E
           value: "1"
         - name: KOPS_CONTROL_PLANE_SIZE
