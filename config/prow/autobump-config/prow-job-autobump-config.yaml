@@ -22,7 +22,8 @@ extraFiles:
   - "config/jobs/kubernetes/kops/build_vars.py"
   - "config/jobs/kubernetes-csi/gen-jobs.sh"
   - "config/jobs/README.md"
-  - "images/kubekins-e2e/Dockerfile"
+  - "images"
+  - ".ko.yaml"
 targetVersion: "latest"
 prefixes:
   - name: "Boskos"
