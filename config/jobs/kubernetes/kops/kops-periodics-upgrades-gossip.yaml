@@ -99,6 +99,8 @@ periodics:
       args:
       - ./tests/e2e/scenarios/upgrade-ab-gossip/run-test.sh
       env:
+      - name: KOPS_FEATURE_FLAGS
+        value: "Azure"
       - name: GINKGO_NO_COLOR
         value: "TRUE"
       - name: KOPS_DNS_DOMAIN

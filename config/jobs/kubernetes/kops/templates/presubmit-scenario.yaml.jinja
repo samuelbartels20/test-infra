@@ -66,6 +66,10 @@
         securityContext:
           privileged: true
         env:
+        {%- if kops_feature_flags %}
+        - name: KOPS_FEATURE_FLAGS
+          value: "{{kops_feature_flags}}"
+        {%- endif %}
         {%- if cloud != "azure" %}
         - name: KUBE_SSH_KEY_PATH
           value: {{kops_ssh_key_path}}
