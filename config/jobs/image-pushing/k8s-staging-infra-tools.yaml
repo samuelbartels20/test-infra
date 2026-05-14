@@ -4,14 +4,14 @@ postsubmits:
   - name: post-registry-push-images
     cluster: k8s-infra-prow-build-trusted
     annotations:
-        testgrid-dashboards: sig-k8s-infra-gcb
+      testgrid-dashboards: sig-k8s-infra-gcb
     decorate: true
     branches:
     - ^main$
     # release tags
     - ^v\d+.*
     spec:
-      serviceAccountName: gcb-builder
+      serviceAccountName: infra-tools
       containers:
         - image: gcr.io/k8s-staging-test-infra/image-builder:v20260419-39c657fdbf
           command:
@@ -29,7 +29,7 @@ postsubmits:
   - name: post-porche-push-images
     cluster: k8s-infra-prow-build-trusted
     annotations:
-        testgrid-dashboards: sig-k8s-infra-gcb
+      testgrid-dashboards: sig-k8s-infra-gcb
     decorate: true
     branches:
     - ^main$
@@ -53,7 +53,7 @@ postsubmits:
   - name: post-k8s-deploy-registry
     cluster: k8s-infra-prow-build-trusted
     annotations:
-        testgrid-dashboards: sig-k8s-infra-gcb
+      testgrid-dashboards: sig-k8s-infra-gcb
     decorate: true
     branches:
     - ^main$
@@ -64,7 +64,7 @@ postsubmits:
       repo: registry.k8s.io
       base_ref: main
       # NOTE: the cloudbuild etc are actually from registry.k8s.io
-      # However they will deploy the terraform cchanges here
+      # However they will deploy the terraform changes here
       workdir: true
     spec:
       serviceAccountName: gcb-builder
