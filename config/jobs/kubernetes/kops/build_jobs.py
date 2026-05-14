@@ -579,18 +579,24 @@ def generate_grid():
                             # RHEL10/Rocky10 kernels removed xt_comment and xt_conntrack modules;
                             # the AWS VPC CNI requires these for iptables-nft SNAT rules.
                             continue
-                        # https://github.com/kubernetes/kops/issues/17915
-                        extra_flags.extend([
-                            "--set=cluster.spec.kubeProxy.proxyMode=nftables",
-                        ])
-                        if 'cilium' in networking:
-                            extra_flags.extend([
-                                "--set=cluster.spec.networking.cilium.enableBPFMasquerade=true",
-                            ])
                         if networking == 'calico':
+                            # Calico BPF mode takes over kube-proxy's role; from
+                            # v3.31 felix also binds the kube-proxy healthz port,
+                            # so kube-proxy must be disabled to avoid the conflict.
+                            # https://docs.tigera.io/calico-enterprise/latest/operations/ebpf/install#disable-kube-proxy-or-avoid-conflicts
                             extra_flags.extend([
+                                "--set=cluster.spec.kubeProxy.enabled=false",
                                 "--set=cluster.spec.networking.calico.bpfEnabled=true",
                             ])
+                        else:
+                            # https://github.com/kubernetes/kops/issues/17915
+                            extra_flags.extend([
+                                "--set=cluster.spec.kubeProxy.proxyMode=nftables",
+                            ])
+                            if 'cilium' in networking:
+                                extra_flags.extend([
+                                    "--set=cluster.spec.networking.cilium.enableBPFMasquerade=true",
+                                ])
                     results.append(
                         build_test(cloud="aws",
                                    distro=distro_short,
@@ -624,18 +630,24 @@ def generate_grid():
                             "--set=cluster.spec.cloudProvider.gce.useStartupScript=true"
                         ])
                     if 'rhel10' in distro or 'rocky10' in distro:
-                        # https://github.com/kubernetes/kops/issues/17915
-                        extra_flags.extend([
-                            "--set=cluster.spec.kubeProxy.proxyMode=nftables",
-                        ])
-                        if 'cilium' in networking:
-                            extra_flags.extend([
-                                "--set=cluster.spec.networking.cilium.enableBPFMasquerade=true",
-                            ])
                         if networking == 'calico':
+                            # Calico BPF mode takes over kube-proxy's role; from
+                            # v3.31 felix also binds the kube-proxy healthz port,
+                            # so kube-proxy must be disabled to avoid the conflict.
+                            # https://docs.tigera.io/calico-enterprise/latest/operations/ebpf/install#disable-kube-proxy-or-avoid-conflicts
                             extra_flags.extend([
+                                "--set=cluster.spec.kubeProxy.enabled=false",
                                 "--set=cluster.spec.networking.calico.bpfEnabled=true",
                             ])
+                        else:
+                            # https://github.com/kubernetes/kops/issues/17915
+                            extra_flags.extend([
+                                "--set=cluster.spec.kubeProxy.proxyMode=nftables",
+                            ])
+                            if 'cilium' in networking:
+                                extra_flags.extend([
+                                    "--set=cluster.spec.networking.cilium.enableBPFMasquerade=true",
+                                ])
                     results.append(
                         build_test(cloud="gce",
                                    runs_per_day=2,
