@@ -62,7 +62,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           command:
             - runner.sh
           args:
@@ -291,7 +291,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.33"
@@ -337,7 +337,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.33"
@@ -383,7 +383,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.34"
@@ -429,7 +429,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.34"
@@ -475,7 +475,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -521,7 +521,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -567,7 +567,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -613,7 +613,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -659,7 +659,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -705,7 +705,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -751,7 +751,7 @@ periodics:
         timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -798,7 +798,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -844,7 +844,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -890,7 +890,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -936,7 +936,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
@@ -982,7 +982,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: BASE_BUILDER_IMAGE
               value: public.ecr.aws/docker/library/golang
@@ -1024,7 +1024,7 @@ periodics:
       timeout: 1h
     spec:
       containers:
-        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260504-c27e3ff179-master
+        - image: gcr.io/k8s-staging-test-infra/kubekins-e2e:v20260511-f09cee265c-master
           env:
             - name: E2E_K8S_VERSION
               value: "1.35"
